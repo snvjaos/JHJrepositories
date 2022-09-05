@@ -121,7 +121,7 @@ __________________________________________________
 -> ctrl+alt+A (A는 Abbribiation 약어)
 
 2. Upate Tag (기존태그 변경하기)
--> ctrl+alt+I (I는 Inverse 반전)
+-> ctrl+alt+U (u는 Upate)
 
 3. Remove Tag(감싼태그 지우기)
 -> ctrl+alt+K (K는 Kill 죽이기)
