@@ -166,7 +166,7 @@
         /* 박스공통 */
         .part {
             width: 750px;
-            border: 10px dotted red;
+            border: 4px double rgb(234, 158, 17);
             /* 보더: 두께 종류 색상 (두종색) */
             padding: 10px;
             margin: 20px auto;
@@ -184,6 +184,12 @@
             height: 150px;
             text-align: center;
             /* 글자중앙 */
+
+            /* 배경색 */
+            background-color: rgb(244, 187, 187);
+
+            /* 둥근모서리 brad */
+            border-radius: 10px;
         }
 
         /* 타이틀 */
@@ -245,6 +251,13 @@
             width: 30px !important;
             /* 인라인 보다 최우선인 !important를 사용
             하지만 주의하여 사용해야함! JS코드가 안먹히는 경우가 있음! */
+
+            /* 이미지 옆 인라인 요소 세로방향 위치정렬속성 va */
+            vertical-align: -9px;
+            /* 특정값: top,bottom,baseline,middle */
+
+            /* 오른쪽 마진 mr-9 */
+            margin-right: -9px;
         }
 
         /* 메인영역 이미지 */
