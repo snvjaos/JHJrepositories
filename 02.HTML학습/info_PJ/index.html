@@ -48,23 +48,37 @@
                     내용만큼 늘어남!
                 3. padding : 안쪽여백
                 4. border: 경계선
+                -> 두께 종류 색상
+                -> 두께 - 경계선의 두께
+                -> 종류 - solid(선형), dashed(데쉬형), dotted(점선형),
+                        ridge(액자형), double(이중선형)
+                -> 색 - 경계선 색
                 5. margin: 바깥여백
+                
+                [ 여백 방향별 설정 : padding / margin ]
+                padding-top, padding-bottom, padding-left, padding-right
+                margin-top, margin-bottom, margin-left, margin-right
+
+                padding : 한개 (4방향공통)
+                padding : 
 
                  */
                  
                  /* 상단영역 */
                 header{
-                    height: 200px;
+                    height: 150px;
+                    text-align: center;
+                    /* 글자중앙 */
                 } 
                 /* 메인영역 이미지 */
-                main img{
+                main img {
                     width: 100%
                 }
                /* 박스공통 */
                .part{border: 10px dotted red; 
                 /* 보더: 두께 종류 색상 (두종색) */
-                padding: 20px;
-                margin: 50px auto;
+                padding: 10px;
+                margin: 20px auto;
                 /* 마진: 위아래 양쪽
                 양쪽을 auto로 주면 블록박스가 중앙에옴!
                 margin: 0 auto 로 주는 경우가 많아서
