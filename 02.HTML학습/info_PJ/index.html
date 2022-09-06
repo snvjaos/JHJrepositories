@@ -50,12 +50,11 @@
         4. border : 경계선
         -> 두께 종류 색상
         -> 두께 - 경계선의 두께
-        -> 종류 - solid(선형), dashed(데쉬형), dotted(점선형),
-                ridge(액자형), double(이중선형)
+        -> 종류 - solid(선형), dashed(데쉬형), 
+                dotted(점선형), ridge(액자형), double(이중선형)
         -> 색 - 경계선 색
         (참고: outline: 두께 종류 색상 -> 박스모델 구성요소가 아님
-        그러나 외각선만 표시할 경우 많이 사용됨! 주변에 영향없음!)
-
+        그러나 외곽선만 표시할 경우 많이 사용됨! 주변에 영향없음!)
         5. margin : 바깥여백
         ______________________________________
         [ 여백 방향별 설정 : padding / margin ]
@@ -70,17 +69,15 @@
         margin: 한개 두개 (위아래 양쪽)
         margin: 한개 두개 세개 (위 양쪽 아래)
         margin: 한개 두개 세개 네개 (4방향 모두 따로)
-
         ___________________________________________
-
         [ 박스의 크기 설정시 패딩과 보더와의 관계 ]
-        1. 크기 설정값이 auto인 상태 : 패딩과 보더가 안쪽포함
+        1. 크기 설정없이 auto인 상태 : 패딩과 보더가 안쪽포함
+        
         2. width, height크기를 줄 경우 패딩과 보더는 바깥으로 나감!
-        (박스가 설정된 크기보다 커짐!!! -> 컨텐트박스 contnet-box)
+        (박스가 설정된 크기보다 커짐!!! -> 컨텐트박스 content-box)
         3. 만약 width, height크기를 유지하고 패딩과 보더를 안쪽으로
-        포함 시키려면 아래의 속성으로 셋팅된다!
-            box-sizing: border-box (bxb)
-
+        포함 시키려면 아래의 속성으로 셋팅한다!
+        >>>>> box-sizing: border-box (bxb)
         ___________________________________________
         [ 글자 관련 속성 ]
         1. 글자크기 -> font-size
@@ -151,32 +148,31 @@
         예) red, green, blue, pink, navy, 등
         - 모든 색상은 w3schools.com의 색상참조로 가서확인!
         https://www.w3schools.com/cssref/css_colors.asp
-
-        ______________________________________________________
-
+        _________________________________________
         [ CSS 적용 우선순위 ]
         inline > id > class > type
         - 인라인이 가장 쌤!
         - 약한 경우에 순위를 가장 높이는 방법! -> !important
         -> 이 방법은 인라인보다도 쌔기 때문에 함부로 쓰면 안됨!
-
-
         ******************************************/
 
         /* 박스공통 */
         .part {
             width: 750px;
-            border: 4px double rgb(234, 158, 17);
+            border: 4px double #10d544;
             /* 보더: 두께 종류 색상 (두종색) */
             padding: 10px;
             margin: 20px auto;
             /* 마진: 위아래 양쪽
-                양쪽을 auto로 주면 블록박스가 중앙에옴!
-                margin: 0 auto 로 주는 경우가 많아서
-                마영오! 라고 불러줌! */
+            양쪽을 auto로 주면 블록박스가 중앙에옴!
+            margin: 0 auto 로 주는 경우가 많아서
+            마영오! 라고 불러줌! */
 
-                /* 박스 크기 유지설정 bxb */
-                box-sizing: border-box;
+            /* 박스 크기 유지설정 bxb */
+            box-sizing: border-box;
+            
+            /* 둥근모서리 brad */
+            border-radius: 10px;
         }
 
         /* 상단영역 */
@@ -185,11 +181,10 @@
             text-align: center;
             /* 글자중앙 */
 
-            /* 배경색 */
-            background-color: rgb(244, 187, 187);
+            /* 배경색 bgc */
+            background-color: #e5fbe6;
 
-            /* 둥근모서리 brad */
-            border-radius: 10px;
+
         }
 
         /* 타이틀 */
@@ -202,7 +197,7 @@
             font-family: 'Black And White Picture', sans-serif;
             /* font-family: san-serif,"긍서","글림","도움"; */
             /* 글자색 c */
-            color: limegreen;
+            color: rgb(4, 93, 4);
             /* 글자자간 ls */
             letter-spacing: 2px;
             /* 글자줄간격 lh */
@@ -235,15 +230,13 @@
         /* 마우스 오버시 */
         /* :hover 가상클래스 */
         /* a+a 앞에 a가 있는 형제a요소 */
-
-        #gnb>a:hover{
+        #gnb>a+a:hover{
             /* 글자색 c */
             color: hotpink;
             /* 글자데코 td */
             text-decoration: overline;
-            /* 외각선 표시 */
-            outline: 1px solid red;
-
+            /* 외곽선 표시 */
+            /* outline: 1px solid red; */
         }
 
         /* 로고링크 */
@@ -252,13 +245,14 @@
             /* 인라인 보다 최우선인 !important를 사용
             하지만 주의하여 사용해야함! JS코드가 안먹히는 경우가 있음! */
 
-            /* 이미지 옆 인라인 요소 세로방향 위치정렬속성 va */
+            /* 이미지 옆 인라인요소 세로방향 위치정렬속성 va */
             vertical-align: -9px;
-            /* 특정값: top,bottom,baseline,middle */
+            /* 특정값: top,bottom,baseline,middle,수치값 */
 
             /* 오른쪽 마진 mr-9 */
             margin-right: -9px;
         }
+
 
         /* 메인영역 이미지 */
         main img {
@@ -267,7 +261,25 @@
 
         /* 하단영역 */
         footer.info {
+            /* 글자중앙 */
             text-align: center;
+            /* 배경색 bgc */
+            background-color: #eeeeee;
+
+            
+        }
+        /* 주소요소 */
+        .info address{
+            /* 글자스타일 */
+            font-style: normal;
+            /* 글자체 */
+            font-family: 'Nanum Gothic';
+            /* 글자크기 */
+            font-size: 14px;
+            /* 줄간격 */
+            line-height: 2;
+            /* 글자색 */
+            color: #222;
         }
     </style>
 </head>
@@ -281,7 +293,7 @@
         <!-- GNB: Global Navigation Bar -->
         <div id="gnb">
             <a href="#">
-                <img src="./images/anverlogo.png" alt="네이버로고" style="width: 20px;">
+                <img src="images/naverlogo.png" alt="네이버로고" style="width: 20px;">
 
             </a>
             <a href="#">정치</a> | 
@@ -295,7 +307,7 @@
     <!-- 2. 메인영역 -->
     <main class="part main">
         <!-- 메인이미지 -->
-        <img src="./images/뉴스.webp" alt="메인뉴스 일러스트 이미지">
+        <img src="./images/mainillust.jpg" alt="메인뉴스 일러스트 이미지">
     </main>
     <!-- 3. 하단영역 -->
     <footer class="part info">
