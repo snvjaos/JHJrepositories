@@ -281,6 +281,19 @@
             /* 글자색 */
             color: #222;
         }
+        /* 이름만 구분한 span요소 */
+        .info address span{
+            /* 글자체 ff */
+            font-family: 'Black And White Picture', sans-serif;
+            /* 글자색 */
+            color: blue;
+            /* 글자크기 */
+            font-size: 20px;
+            /* 글자데코 밑줄 tdu */
+            text-decoration: underline;
+            /* 글자데코스타일 tds */
+            text-decoration-style: dotted;
+        }
     </style>
 </head>
 
@@ -292,29 +305,29 @@
         <!-- 1-2.GNB메뉴 -->
         <!-- GNB: Global Navigation Bar -->
         <div id="gnb">
-            <a href="#">
-                <img src="images/naverlogo.png" alt="네이버로고" style="width: 20px;">
+            <a href="index.html" title="메인 페이지로 이동하기">
+                <img src="./images/anverlogo.png" alt="네이버로고" style="width: 20px;">
 
             </a>
-            <a href="#">정치</a> | 
-            <a href="#">경제</a> | 
-            <a href="#">사회</a> | 
-            <a href="#">IT/과학</a> | 
-            <a href="#">TV/연예</a>
+            <a href="sub1.html">정치</a> | 
+            <a href="sub2.html">경제</a> | 
+            <a href="sub3.html">사회</a> | 
+            <a href="sub4.html">IT/과학</a> | 
+            <a href="sub5.html">TV/연예</a>
         </div>
 
     </header>
     <!-- 2. 메인영역 -->
     <main class="part main">
         <!-- 메인이미지 -->
-        <img src="./images/mainillust.jpg" alt="메인뉴스 일러스트 이미지">
+        <img src="./images/뉴스.webp" alt="메인뉴스 일러스트 이미지">
     </main>
     <!-- 3. 하단영역 -->
     <footer class="part info">
         <!-- 회사주소 및 정보 -->
         <address>
             서울시 강남구 역삼동 119 대호B 8F <br>
-            대표: Jung Hwan Joo <br>
+            대표: <span>Jung Hwan Joo</span> <br>
             전화: 010-1234-1234
         </address>
     </footer>
@@ -339,6 +352,9 @@
             (보통 article 이나 section은 
             w3c에서 heading 태그(h1~h6)를 내용에
             사용할 것을 권고함!-안써도 무관!)
+            [ span 요소 : (span-범위) ]
+            - 아무런 특징이 없는 인라인요소
+            - 인라인 컨텐츠를 구분하여 구조화함
             [ img요소 : image ]
             - 이미지를 넣어주는 요소
             - 필수속성:
@@ -381,6 +397,11 @@
             - 속성설정 방법
                 속성명:값;
             -> 이런 방법을 인라인 CSS라고함!
+            [ title 속성 ]
+            - 툴팁을 나오게 하는 속성임
+            - 값으로 메시지를 넣으면 마우스 오버시
+              툴팁으로 메시지가 보인다
+            - 어떤 요소에도 필요하면 사용가능함
          -->
 
 </body>
