@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* Info PJ 서브페이지 css - sub.css */
+/* Info PJ 서브페이지 CSS - sub.css */
 
 /* 공통클래스 불러오기 */
 /* 
@@ -39,17 +39,18 @@
     /* 단어간격 ws-1 */
     word-spacing: -1px;
 
-    /* 줄바꿈방지 ws */
+    /* 줄바꿈방지 whs */
     /* white-space: nowrap; */
-    /* 언제쓰나? 조금 차이로 줄바꿈되는 경우 안되게할때 
-    기본박스는 모두 warp박스임! */
-    
+    /* 언제쓰나? 조금차이로 
+    줄바꿈되는 경우 안되게할때 
+    기본박스는 모두 wrap박스임! */
+
 }
 /* 2-3. 기사사진(+사진설명) */
 .afig{
     /* 마진 m */
     margin: 15px 0;
-    /* 마진: 위아래 양쪽  */
+    /* 마진: 위아래 양쪽 */
 
     /* 컨텐츠 중앙정렬 tac */
     text-align: center;
@@ -59,10 +60,10 @@
     /* 최대가로크기 maw100p */
     max-width: 100%;
     /* 이미지에 이설정을 하면
-    박스가 이미지보다 이미지보다 작아질떄
+    박스가 이미지보다 작아질때
     이미지가 박스크기 맞게 작아짐! */
-    
-     /* 가로크기 w100p */
+
+    /* 가로크기 w100p */
     /* width: 100%; */
 }
 /* 기사이미지 설명글 small */
@@ -70,19 +71,101 @@
     /* 글자체 ff */
     font-family: gulim;
     /* 글자색 c */
-    color: #555;
+    color: #555;    
 }
+
 /* 2-4. 기사내용 */
 .arti p{
     /* 글자체 ff */
     font-family: "Nanum Gothic","굴림";
-    /* 글자크기 ff */
+    /* 글자크기 fz */
     font-size: 18px;
     /* 줄간격 lh */
     line-height: 1.6;
     /* 패딩양쪽 */
     padding: 0 10px;
 }
-/* 2-5. 기자정보 */
-/* 2-6. 기사원문 */
+/* 중간 글자표시박스 변경 */
+.arti mark {
+    /* 인라인을 블록으로 전환! */
+    display: block;
+    /* 배경색 */
+    background-color: #eaeaea;
+    /* 글자중앙정렬 */
+    text-align: center;
+    /* 줄간격 */
+    line-height: 3;
+    /* 글자체 */
+    font-family: 'Nanum Gothic';
+    /* 글자크기 */
+    font-size: 20px;
+    /* 글자두께 */
+    font-weight: bold;
+    /* 보더위 */
+    border-top: 2px solid gray;
+    /* 보더아래 */
+    border-bottom: 2px solid #ccc;
+}
+/* i요소 변경 */
+.arti i{
+    /* 글자스타일 노멀 fsn */
+    font-style: normal;
+    /* 글자 두껍게 fwb */
+    font-weight: bold;
+}
+/* q요소 변경 */
+.arti q{
+    /* 글자색 c */
+    color: darkmagenta;
+    /* 글자두껍게 fwb */
+    font-weight: bold;
+}
+/* del요소 변경 */
+.arti del{
+    /* 글자색 c */
+    color: lightpink;
+}
 
+/* 2-5. 기자정보 */
+.rinfo{
+    /* 패딩 p */
+    padding: 10px;
+    /* 글자크기 */
+    font-size: 14px;
+}
+
+/* 2-6. 기사원문 */
+.org a{
+    /* 패딩 p */
+    padding: 10px;
+    /* 글자크기 */
+    font-size: 20px;
+    /* 글자색 c */
+    color: lightseagreen;
+    /* 글자밑줄없앰 tdn */
+    text-decoration: none;
+    /* 보더 bd */
+    border: 1px dashed lightskyblue;
+}
+
+/* 공통박스 article */
+.main article{
+    /* 보더위 bdt */
+    border-top: 2px dashed #ccc;
+    /* 마진위 mt */
+    margin-top: 40px;
+    /* 패딩 p */
+    padding: 15px;
+}
+
+/* 공통 타이틀 h3 */
+.main h3{
+    /* 글자체 ff - 웹폰트적용 */
+    font-family: 'Black And White Picture', sans-serif;
+    /* 글자두께 얇게 fwn */
+    font-weight: normal;
+    /* 글자크기 fz */
+    font-size: 26px;
+    /* 패딩왼쪽 pl */
+    padding-left: 20px;
+}
