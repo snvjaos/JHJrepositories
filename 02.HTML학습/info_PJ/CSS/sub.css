@@ -178,9 +178,19 @@
     padding: 5px;
     /* float설정으로 망가진
     부모박스는 overflow:hidden으로
-    막아준다 (자식의 크기인식) */
+    고쳐준다(자식의 크기인식) */
     /* 넘치는 자식요소 숨기기 oh */
     overflow: hidden;
+
+    /* 글자설정 */
+    /* font: 스두크/줄체 */
+    font: 17px/1.7 'Nanum Gothic';
+    /* 글자정렬 ta */
+    text-align: justify;
+    /* justify 양쪽정렬 */
+
+    /* 들어쓰기 ti */
+    text-indent: 20px;
 }
 /* 블록인용박스 내 이미지 */
 .bquote img{
@@ -188,31 +198,46 @@
     오른쪽으로 흘러가게 설정 */
     float: left;
     /* 
-        float속성
+        [ float속성 ]
         - 인라인요소에서 사용하면
         선택된 요소의 위치를 잡고
         그 왼쪽이나 오른쪽으로 다른
         컨텐츠가 흘러가게 한다!
-        - 특히 이미지에서 글자를
-        오른쪽이나 왼쪽으로
-        흘러가게함
+        - 특히 이미지에서 글자를 
+        오른쪽이나 왼쪽으로 흘러가게함
         - 기본적으로 이미지하단에
-        한줄만 글자가 흘러가게
-        되어있음!
-        (블록에서 float은
-        별도로다룸!)
-        
+        한줄만 글자가 흘러가게 되어있음!
+        (블록에서 float은 별도로다룸!)
         -> 값에 따라
-        left - 나는 왼쪽 다른건
-        오늘쪽으로 흘러감
-        right - 나는 오른쪽 다른건
-        왼쪽으로 흘러감
-        (인라인요소를 오른쪽 끝으로
-        보낼때도 사용함!)
-        
+        left - 나는 왼쪽 다른건 오른쪽으로 흘러감
+        right - 나는 오른쪽 다른건 왼쪽으로 흘러감
+        (인라인요소를 오른쪽 끝으로 보낼때도 사용함!)
     */
     /* 둥근모서리 brad */
     border-radius: 5px;
-    /* 오늘쪽마진 mr */
+    /* 오른쪽마진 mr */
     margin-right: 15px;
+}
+
+/* 주해박스 */
+/* .desc 앞에 .main부모를 쓴이유?
+기존 셋팅 .main article에서 설정한
+값이 우선하기 때문에 이것 보다
+우선하도록 상위 부모를 씀! */
+.main .desc{
+    /* 보더 하단 bdb */
+    border-bottom: 2px dashed #ccc;
+    /* 패딩 하단 pb */
+    padding-bottom: 40px;
+    /* 마진 하단 mb */
+    margin-bottom: 20px;
+    
+}
+
+/* 주해박스 small요소 */
+.desc small{
+    /* 전체 패딩적용위해 블록박스로 변경 */
+    display: block;
+    /* 패딩 p - 위아래 양쪽 */
+    padding: 0 20px;
 }
