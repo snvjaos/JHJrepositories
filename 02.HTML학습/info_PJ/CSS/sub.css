@@ -241,3 +241,50 @@
     /* 패딩 p - 위아래 양쪽 */
     padding: 0 20px;
 }
+
+/* 오늘의 작품 & 느낌 */
+.work {
+    /* 글자중앙정렬 tac */
+    text-align: center;
+    background-color: #d7ffd6;
+}
+/* 오늘의 작품 cite요소 */
+.work cite {
+    /* cite요소 기본 이탤릭해제 */
+    font-style: normal;
+    /* 글자두껍게 fwb */
+    font-weight: bold;
+    /* 글자체 ff */
+    font-family: 'Black And White Picture', sans-serif;
+    /* 글자크기 fz */
+    font-size: 20px;
+    /* 글자색 c */
+    color: darkorange;
+}
+
+/* 메인 컨텐츠 아래 a요소
+주의사항 - 글자색, 밑줄은 반드시
+a요소에서 처리할것! */
+.main a{
+    /* 글자색 c */
+    color: #222;
+    /* 글자데코 tdn 밑줄없앰 */
+    text-decoration: none;
+    /* 글자크기 fz */
+    font-size: 17px;
+    /* 글자체 ff */
+    font-family: "Nanum Gothic";
+    /* 줄간격 lh */
+    line-height: 2.5;
+    /* 자간 ls */
+    letter-spacing: -1px;
+}
+/* a요소 마우스 오버시 */
+/* 가상클래스 :hover */
+.main a:hover{
+    /* 글자색 c */
+    color: greenyellow;
+    /* 글자그림자 ts */
+    text-shadow: 1px 1px 1px #000;
+    /* text-shadow: x축 y축 경계흐림 색; */
+}
