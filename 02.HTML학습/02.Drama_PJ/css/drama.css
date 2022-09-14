@@ -1,2 +1,159 @@
 @charset "utf-8";
 /* 한국최신드라마 리스트 CSS - drama.css */
+
+/* 웹폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+/* 
+    font-family: 'Hahmlet', serif;
+*/
+
+/* 초기화 */
+html,body{
+    margin: 0;
+    padding: 0;
+}
+/* 테이블 공통 */
+.tbl{
+    /* 글자체 (웹폰트) ff */
+    font-family: 'Hahmlet', serif;
+    /* 글자색 c */
+    color: #222;
+    /* 테이블 기본 사이간극 없애기 */
+    border-collapse: collapse;
+}
+
+/* 드라마 리스트 테이블 */
+#drama{
+    /* 글자크기 fz */
+    font-size: 24px;
+    /* 블록or테이블 가로중앙정렬 - 마.영.오! */
+    margin: 0 auto;
+    /* 가로크기 w */
+    width: 1000px;
+    /* 테이블 width지정이 없으면 내용만큼 늘어남!
+    좁으면 아래로 내용이 줄바꿈됨 */
+}
+/* 테이블 제목 */
+#drama caption{
+    /* 글자크기 fz */
+    font-size: 35px;
+    /* 글자두껍게 fwb */
+    font-weight: bold;
+    /* 자간 ls */
+    letter-spacing: 5px;
+    /* 패딩 p */
+    padding: 50px 0 20px;
+    /* 위 양쪽 아래 */
+}
+/* td와 th 패딩 */
+#drama td,
+#drama th{
+    padding: 8px 10px;
+    /* 위아래 양쪽 */
+}
+
+/* td에 밑줄넣기 - 테이블본문에만 적용 */
+#drama tbody td{
+    /* 보더아래 bdb */
+    border-bottom: 1px solid #ccc;
+}
+/* th에 윗줄, 아랫줄 두꺼운 보더 넣기 */
+#drama th{
+    /* 보더위 bdt */
+    border-top: 2px solid #555;
+    /* 보더아래 bdb */
+    border-bottom: 2px solid #555;
+}
+/* 본문(tbody) 마지막 tr의 td 아랫쪽 보더 넣기 */
+#drama tbody tr:last-child td{
+    /* 보더아래 bdb */
+    border-bottom: 2px solid #555;
+}
+/* 본문(tbody)의 짝수번째 tr의 td에 배경색 넣기 */
+/* nth-child(순번) - 순번에 짝/홀수
+-> odd(홀수), even(짝수) */
+#drama tbody tr:nth-child(even) td{
+    /* 배경색 bgc */
+    background-color: #ededed;
+}
+
+/* 본문(tbody)의 첫번째 td (번호항목) 중앙정렬 */
+#drama tbody td:first-child{
+    /* 글자중앙정렬 tac */
+    text-align: center;
+}
+
+/* 하단부분(tfoot) */
+#drama tfoot td{
+    /* 글자중앙 tac */
+    text-align: center;
+    /* 패딩 p */
+    padding: 45px 0;
+}
+
+/* 드라마명 링크 처리 */
+#drama tbody a {
+    /* 글자색 c */
+    color: #222;
+    /* 밑줄없앰 tdn */
+    text-decoration: none;
+}
+/* 드라마명 오버시 */
+#drama tbody a:hover {
+    /* 글자색 c */
+    color: hotpink;
+    /* 글자데코 : 밑줄 tdu */
+    text-decoration: underline;
+    /* 글자데코 스타일 : 물결모양 */
+    text-decoration-style: wavy;
+}
+
+/* 하단 페이징 링크 처리 */
+#drama tfoot a {
+    /* 글자색 c */
+    color: #222;
+    /* 밑줄없앰 tdn */
+    text-decoration: none;
+}
+/* 하단 페이징 오버시 */
+#drama tfoot a:hover {
+    /* 글자색 c */
+    color: blueviolet;
+}
+
+/* 구분테이블 박스 */
+div.gubun{
+    /* 가로크기 w */
+    width: 1000px;
+    /* 마영오! */
+    margin: 0 auto;
+    /* 마진 아래 */
+    margin-bottom: 100px;
+    /* float으로 망가짐 방지 oh */
+    overflow: hidden;
+}
+/* 구분테이블 */
+table#gubun{
+    /* 글자크기 fz */
+    font-size: 20px;
+    /* 보더 */
+    border: 1px solid #999;
+    /* 오른쪽 끝으로 보냄 flr */
+    float: right;
+}
+/* 구분테이블 td */
+#gubun td{
+    /* 패딩 p */
+    padding: 10px;
+}
+/* 구분테이블 첫번째 tr의 첫번째 td의 오른쪽 점선넣기 */
+#gubun tr:first-child td:first-child{
+    /* 보더 오른쪽 bdr */
+    border-right: 1px dotted #999;
+}
+/* 구분테이블 두번째 tr부터 마지막 tr 까지 즉, 앞에 tr이 있는 tr형제요소만 선택하여 보더 상단 넣기!
+앞에 tr이 있는 tr -> tr+tr */
+#gubun tr+tr td{
+    /* 보더 윗쪽 bdt */
+    border-top: 1px dotted #999;
+}

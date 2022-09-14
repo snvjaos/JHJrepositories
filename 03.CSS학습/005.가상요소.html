@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS 가상요소</title>
+    <style>
+        /* 
+            [ 가상요소란? ]
+            - Pseudo-element:슈도엘러먼트
+            : 데이터를 담을 수 있는 요소일 경우
+            맨앞과 맨뒤에 이미지나 글자를 넣을 수 있고
+            또한 첫글자나 첫째줄 글자라인의 디자인을
+            마치 요소로 싼것처럼 디자인을 변경할 수 있는
+            CSS의 요소 추가 방법이다!
+            -> 태그가 없는데 있는 것 같이 사용하니 가상요소다!
+
+            **********************************************
+            - 가상요소 표기법
+            콜론을 선택요소 뒤에 붙여서 2개사용한다 
+            ::before / ::after / ::first-letter / ::first-line
+            - css3이전에는 콜론을 1개만 썼었으나 가상클래스가
+            콜론을 하나쓰므로 이를 구분하기 위해 2개쓰는 것으로 변경됨
+            (하나만 써도 적용은 된다...)
+
+            1. ::before -> ~전에 의 뜻이므로 요소 맨앞에 뭔가추가
+            -> 필수속성 content 속성에 
+            content: "글자" -> 글자출력
+            content: url(이미지경로) -> 이미지출력
+
+            2. ::after -> ~후에 의 뜻이므로 요소 맨뒤에 뭔가추가
+            -> 필수속성 content 속성에 
+            content: "글자" -> 글자출력
+            content: url(이미지경로) -> 이미지출력
+
+            -> before와 after는 모든 요소의 반드시 하나씩 사용가능
+            바지에 앞주머니, 뒷주머니가 하나씩 있다!
+            -> 기본개념: 선택요소 맨앞이나 뒤에 span태그를 쓴것과 유사, 이미지를 넣으면 이미지 태그와 유사
+
+            3. ::first-letter 
+            - 선택요소 내부의 글자 중 첫번째 글자를 마치 태그로 싼것
+            처럼 디자인을 적용할 수 있다!
+
+            4. ::first-line
+            - 선택요소 내부의 글자 중 첫번째 줄만 마치 태그로 싼 것
+            처럼 디자인을 적용할 수 있다!
+            특징: 기존의 첫번째 줄이었던 글자가 내려가면 적용이 사라짐
+            무조건 첫번째 줄에 온 글자만 적용된다!
+
+
+             */
+        /* h2요소 맨앞에 이미지 넣기 */
+        h2::before {
+            /* 내용넣기 속성 content-> 필수! */
+            /* content: '나야나!'; */
+            content: url(./imgs/blogo.png);
+            width: 20px;
+            height: 10px;
+            /* 이미지는 원본 그대로 사용해야함
+            가로,세로 크기를 변경하고 싶으면
+            박스로 만들고 배경이미지로 처리함! */
+
+            /* 마진 적용됨! */
+            margin-right: 20px;
+            /* 인라인요소간 세로정렬 va 
+            vertical-align: 값으로
+            top, middle, bottom, 숫자px 등*/
+            vertical-align: top;
+
+        }
+
+        /* 맨뒤 추가요소 ::after */
+        h2::after {
+            content: '';
+            /* content 빈값은 
+            마치 <span>태그를 쓴것과 비슷 */
+            display: inline-block;
+            /* display를 block를 쓰면 <div>태그를 
+            쓴것과 비슷함! 그러나 여기서 디자인적용과
+            한줄에 오는 방법으로 inline-block을 씀 */
+            width: 40px;
+            height: 60px;
+            /* 인라인요소간 세로정렬 vam */
+            vertical-align: middle;
+            /* 왼쪽마진 ml20 */
+            margin-left: 20px;
+            /* 배경: 색이반고윙/크 - bg */
+            background: url(./imgs/bg_logo_a_01.png) no-repeat center/80%;
+
+            /* 둥근모서리 brad */
+            border-radius: 5px;
+            /* 테두리 (보더) bd */
+            border: 2px solid #00cc25;
+            /* 박스그림자
+                box-shadow: x y blur spread 색
+                box-shadow: x위치 y위치 경계흐림 그림자크기 그림자색
+                맨앞에 inset을 쓰면 내부그림자!
+
+                콤마로 구분하여 여러개의 그림자효과 가능!
+
+                -bsh
+            */
+            box-shadow: 
+            inset 0 0 10px #b300c3c5,
+            10px 10px 5px 2px #00000049;
+
+            /* outline: 2px dashed red; */
+        }
+
+
+
+        /* dl요소 디자인 */
+        dl {
+            width: 800px;
+            max-width: 90%;
+            /* 설정 크기보다 화면이 작아지면 90%적용 */
+            font-size: 24px;
+            margin-left: 50px;
+        }
+
+        /* 반복되는 요소의 앞에 아이콘 가상요소로 넣기 */
+        dl dt::before{
+            content: '♥';
+            color: red;
+            font-size: 30px;
+            margin-right: 10px;
+            vertical-align: 1px;
+        }
+
+        /* dd전체와 
+        dd.story>h3에 가상요소 before적용하기 */
+        dl dd::before,
+        dd.story>h3::before{
+            content: '😍';
+            /* 이모지는 
+            윈도우키+점(.) */
+            font-size: 20px;
+            margin-right: 5px;
+            vertical-align: 2px;
+        }
+
+
+        /* 출연배우의 dd부터 아이콘변경 */
+        dl dd:nth-of-type(5)~dd::before{
+            content: '👩‍🦰';
+        }
+        /* 아티스트의 dd부터 아이콘변경 */
+        dl dd:nth-of-type(10)~dd::before{
+            content: '🎻';
+        }
+
+        /* 스토리의 dd는 가상요소 없애기 */
+        dd.story::before{
+            display: none;
+        }
+
+        /* 스토리의 dd 아래 h3 이모지변경 */
+        dd.story>h3::before{
+            content: '📣';
+        }
+
+        /* .story의 첫번째 p태그의 첫번째 글자 디자인 변경하기 */
+        dd.story p:first-of-type::first-letter{
+            font-size: 50px;
+            color: hotpink;
+            font-weight: bold;
+        }
+
+        /* .story의 첫번째 p태그의 첫번째줄 디자인 변경하기 */
+        dd.story p:first-of-type::first-line{
+            color: blue;
+        }
+
+
+
+        /* 두번째 p태그는 태그로 
+        첫번째 글자(b태그), 첫번째 줄(span)변경 */
+        dd.story p:last-of-type b{
+            font-size: 50px;
+            color: hotpink;
+        }
+        dd.story p:last-of-type span{
+            color: blue;
+        }
+
+
+        /* 기타 가상요소 ::selection */
+        /* 드래그 선택시 글자색 배경색 설정변경! */
+        p::selection{
+            color: red;
+            background-color: yellow;
+        }
+        /* ::selection만쓰면 전체가 다 적용됨! 
+        특정선택자::selection 으로 쓰면 자식태그로
+        싸지 않은 글자만 적용됨!*/
+    </style>
+</head>
+
+<body>
+    <h1>CSS 가상요소</h1>
+
+    <h2>[ 드라마 "도깨비" 제작발표회 ]</h2>
+    <dl>
+        <dt>등장인물</dt>
+        <dd>김신</dd>
+        <dd>저승사자</dd>
+        <dd>지은탁</dd>
+        <dd>써니</dd>
+        <dd>유덕화</dd>
+
+        <dt>출연배우</dt>
+        <dd>공유</dd>
+        <dd>이동욱</dd>
+        <dd>김고은</dd>
+        <dd>유인나</dd>
+        <dd>육성재</dd>
+
+        <dt>아티스트</dt>
+        <dd>헤이즈</dd>
+        <dd>마마무</dd>
+        <dd>찬열,펀치</dd>
+
+        <dt>스토리</dt>
+        <dd class="story">
+            <h3>시놉시스</h3>
+            <p>
+                불멸의 삶을 끝내기 위해 인간 신부가 필요한 도깨비, 그와 기묘한 동거를 시작한 기억상실증 저승사자. 그런 그들 앞에 '도깨비 신부'라 주장하는 '죽었어야 할 운명'의 소녀가 나타나며
+                벌어지는 신비로운 낭만 설화
+            </p>
+            <p>
+                <b>불</b><span>멸의 삶을 끝내기 위해 인간 신부가</span> <br> 필요한 도깨비, 그와 기묘한 동거를 시작한 기억상실증 저승사자. 그런 그들 앞에 '도깨비 신부'라
+                주장하는
+                '죽었어야 할 운명'의 소녀가 나타나며
+                벌어지는 신비로운 낭만 설화
+            </p>
+
+        </dd>
+
+    </dl>
+</body>
+
+</html>
