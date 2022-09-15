@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* 도깨비 PJ 메인 페이지 CSS - main.css */
+/* 메인 페이지에만 적용되는 CSS */
+
+/* 외부 CSS합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+/* 공사중 표시 */
+body * {
+    outline: 2px dashed gray;
+}
+
+/* 컨텐츠 파트 최상위부모 */
+body{
+    /* 한번에 배경주기 + 여러개주기 */
+    /* background: 색이반고윙/크 */
+    /* 콤마로 구분하여 여러 배경이미지를 넣을 수 있고
+    먼저쓴 이미지가 위에 온다! */
+    background: 
+    url(../images/bg_logo_a_01.png) no-repeat fixed 10% 30%/10%,
+    url(../images/bg_mainvisual.jpg) no-repeat fixed center/cover;
+   
+    /*  
+        background-attachment: fixed;
+        고정의 기준은 보이는 화면이다!!!
+        스크롤해도 고정된 배경은 움직이지 않는다!
+     */
+}
+
+
+/****** 메인영역 ******/
+.cont{
+    /* 높이값 h */
+    height: 969px;
+    /* 넘치는 자식요소숨기기 */
+    overflow: hidden;
+    /* 이거 왜했지? 첫번째 자식요소 마진탑값이
+    부모요소 바깥으로 미는 기본특성이 있으므로
+    이것을 포함하기 위해 설정함! */
+}
+
+/* 전체캐릭터박스 */
+.cbx{
+    /* 가로크기 w */
+    width: 90%;
+    /* 마영오! */
+    margin: 0 auto;
+    /* 마진탑 mt */
+    margin-top: 500px;
+}
+
+/* 자식요소의 float해제 설정 가상요소 after로! */
+.cbx::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* 캐릭터박스 */
+.cat {
+    /* 가로크기 4등분 : 25% - 1%(양쪽마진)  */
+    width: 24%;
+    /* 양쪽마진 : 위아래0 양쪽0.5% */
+    margin: 0 .5%;
+    /* 보통 0.5%와 같이 0.소수점은 앞에 0생략가능! */
+
+    /* 블록박스 옆으로 흐르게 */
+    float: left;
+    /* left값은 "나는왼쪽에 너는 오른쪽에 올라와!" */
+}
+
+/* 캐릭터 이미지
+- .ci의 직계자식 img만 선택! */
+.ci > img{
+    /* 박스를 채움! */
+    width: 100%;
+}
+
+/* 캐릭터 이름박스 */
+.ci figcaption{
+    /* 글자중앙 tac 
+        text-align 속성은 글자뿐아니라
+        인라인요소는 모두 적용된다!
+        단, 크기를 가지는 블록형박스만됨!
+    */
+    text-align: center;
+
+    /* 이미지를 위로 올려 겹치게
+    하려면? 포지션을 안쓰고는 마진을
+    마이너스로 준다! */
+    margin-top: -20%;
+    /* %의 기준은? 원래박스 높이값 */
+}
+
+/* 캐릭터 이름이미지 공통 */
+.ci figcaption img {
+    /* 가로크기 w */
+    width: 40%;
+    /* 항상 값이 %단위일 경우
+    질문한다~!!! 기준이뭐지?
+    -> 여기서는 싸고 있는 
+    figcation 박스 가로크기가 기준 */
+}
+
+/* 캐릭터 이름이미지 
+첫번째이미지(진한이미지) 숨기기 */
+.ci figcaption img:first-child{
+    display: none;
+}
+/* 캐릭터박스 .cat에 오버시 */
+/* 마우스 오버시 처리1
+첫번째이미지 보이기(원래 inline) */
+.cat:hover .ci figcaption img:first-child{
+    display: inline;
+}
+/* 마우스 오버시 처리2
+마지막이미지 숨기기 */
+.cat:hover .ci figcaption img:last-child{
+    display: none;
+}
