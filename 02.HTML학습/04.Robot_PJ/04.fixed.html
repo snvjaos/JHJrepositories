@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position - fixed</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        .bx{
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            /* 글자가로중앙 */
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            /* 글자세로중앙 */
+            line-height: 100px;
+        }
+
+        .f1{
+            position: fixed;
+            top: 0;
+            left: 0;
+            /*************************************** 
+            [ 4. fixed 포지션 ]
+
+            1) 위치값을 설정하지 않을때
+            - 자신보다 위에 있는 static한 요소 아래
+            그래로 있다가 스크롤시 그 자리를 화면에서
+            지키고 움직이지 않음!
+            -> 젠틀앱솔루트와 유사! -> 젠틀픽스드!
+
+            2) 위치이동값을 썼을때
+            - 부모를 기준하여 위치를 잡는다!
+            -> 부모가 누구? 보이는 화면 즉, window!
+
+            -> 보이는 화면에서 사라지지 않는다!
+            -> 스크롤에 영향을 받지 않는다!
+            -> 부모를 제외한 모든 다른특성은 앱솔루트와
+            거의 유사함!
+
+            3) 아무리 부모요소가 여러겹으로 싸고 있어도
+            그 중 포지션이 있어도 fixed를 주면 모두를
+            무시하고 보이는 화면을 기준하여 배치된다!
+
+            4) 부모박스가 fixed이면 그 자식요소들은 모두
+            화면에 고정된다!(자식요소가 fixed일 필요없다!)
+
+            5) 화면 바깥에 숨겼다가 보이게 할때
+            fixed를 사용함(기준이 화면이므로!)
+
+            6) z-index도 포지션이 있는 경우
+            숫자로 비교해서 위아래 위치관계를 정함!
+
+            7) 크기를 주지 않은 경우 내용물에 밀착된다!
+            -> 판타롱스타킹 픽스드!
+
+            8) 인라인요소도 fixed를 주면 블록요소로 전환됨!
+
+
+            ***************************************/
+
+            
+            width: 100%;
+            height: 100px;
+            line-height: 50px;
+            text-align: center;
+            border: 4px double green;
+            font-size: 30px;
+            color: #fff;
+            background: url(./ab_img/ab0.jpg) repeat-x 0/auto 100%;
+        }
+        /* fixed를 부모로한 앱솔루트 */
+        .newabs{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            /* 부모는? .f2 */
+            background-color: pink;
+            line-height: 1;
+            color: #000;
+        }
+
+        /* 일부를 화면바깥에 숨겼다가 보이기 박스 */
+        .f2{
+            position: fixed;
+            top: 50%;
+            left: -50%;
+            /* 왼쪽 바깥에 반 나가있음! */
+
+            /* 트랜지션 trs */
+            transition: 1s;
+
+            /* 가로크기 화면채움 */
+            width: 100%;
+            height: 100px;
+            line-height: 50px;
+            text-align: center;
+            border: 4px double green;
+            font-size: 30px;
+            color: #fff;
+            background: url(./ab_img/ab0.jpg) repeat-x 0/auto 100%;
+        }
+        /* 오버시 fixed 들어오기 */
+        .f2:hover{
+            left: 0;
+        }
+
+        
+
+        #a1{
+            position: absolute;           
+            background: url(./ab_img/ab1.jpg) no-repeat center/cover;
+            color: #fff;
+        }
+
+
+        #s1{
+            background-color: lightgreen;
+            z-index: 999999999;
+            /* static은 z-index적용X */
+        }
+
+        #r1{
+            position: relative;
+            /* top: 50px;
+            left: 50px;
+            z-index: 1; */
+            /* 기본값 0이므로 1만써도 위로올라감! */
+
+            background: url(./ab_img/ab5.jpg) no-repeat center/cover;
+            color: #fff;
+        }
+        #r2{
+            position: relative;
+            bottom: 75px;
+            right: -86px;
+            /* z-index: -1; */
+            /* static보다 아래는 마이너스 값! */
+
+            background: url(./ab_img/ab4.jpg) no-repeat center/cover;
+            color: #fff;
+
+        }
+
+        /* 부모를 찾는 앱솔루트 */
+        .bx2{
+            border: 2px dotted orange;
+            padding: 50px;
+            font-size: 24px;
+            text-align: center;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="bx" id="r1">r1</div>
+    <div class="bx" id="s1">s1</div>
+    <div class="bx" id="a1">a1</div>
+    <div class="bx" id="r2">r2</div>
+    <div class="bx" id="s2">s2</div>
+
+    
+
+    <!-- 화면고정 fixed 포지션 -->
+    <div class="f1">f1</div>
+    <div class="f2">f2</div>
+
+    
+</body>
+</html>
