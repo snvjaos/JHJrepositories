@@ -1,10 +1,20 @@
 @charset "utf-8";
 /* 로봇 PJ CSS - robot.css */
 
+/* 웹폰트 CDN */
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Black+Ops+One&family=Chakra+Petch&family=Orbitron:wght@500&display=swap');
+
+/* 
+    font-family: 'Barlow', sans-serif;
+    font-family: 'Black Ops One', cursive;
+    font-family: 'Chakra Petch', sans-serif;
+    font-family: 'Orbitron', sans-serif;
+*/
+
 /* 공사중표시 */
-body *{
+/* body *{
     outline: 2px dashed lime;
-}
+} */
 
 /* 초기화 */
 html,body,h1,h2,h3,ul,ol{
@@ -21,7 +31,7 @@ body{
     background: url(../images/bg.jpg) no-repeat fixed top/cover;
 }
 
-/* 공통class */
+/****** 공통class ******/
 /* 메탈소재1 배경 */
 .mt1{
     background: url(../images/metal01.jpg) no-repeat center/cover;
@@ -29,6 +39,12 @@ body{
 /* 메탈소재2 배경 */
 .mt2{
     background: url(../images/metal02.jpg) no-repeat center/cover;
+}
+/* 빛이나는 로봇 */
+.brRo, .brRo::after, .brRo::before{
+    /* 박스 그림자 : x y blur spread 색 */
+    box-shadow: 0 0 10px 5px cyan;
+    /* 박스 그림자를 밝은색으로주면 빛나는 효과를 줄 수 있음 */
 }
 
 /* 2-1. 로봇박스 */
@@ -45,6 +61,9 @@ body{
     height: 250px;
     /* 마영오 */
     margin: 0 auto;
+
+    /* 둥근모서리 : 왼위 오른위 오른아래 왼아래(시계방향) */
+    border-radius: 50px 50px 0 0;
 }
 /* 눈공통 */
 .eye{
@@ -54,12 +73,19 @@ body{
     height: 50px;
 
     /* 배경공통 */
+    /* 배경색 */
+    background-color: #fff;
     /* 배경반복 : 반복안함 */
     background-repeat: no-repeat;
     /* 배경위치 : 중앙 */
     background-position: center;
     /* 배경크기 : 채움 */
     background-size: 100% 100%;
+
+    /* 둥근모서리: 50% 원 */
+    border-radius: 50%;
+    /* 보더 이중선 */
+    border: 4px double #000;
 }
 /* 왼눈 */
 .e1{
@@ -80,14 +106,418 @@ body{
     left: 99px;
     width: 50px;
     height: 70px;
-    background: url(../images/nose.jpg) no-repeat 0/100% 100%;
+    background: url(../images/nose.jpg) no-repeat 0/110% 100%;
+    /* 둥근모서리 */    
+    /* border-radius: 30px; */
+    clip-path: polygon(36% 10%,69% 10%,80% 60%,94% 70%,86% 90%,18% 90%,8% 74%,20% 60%);
 }
 /* 입 */
 .mouth{
     position: absolute;
     bottom: 17px;
-    left: 70px;
+    left: 74px;
     width: 96px;
     height: 41px;
     background: url(../images/mouth.png) no-repeat 0/100% 100%;
 }
+
+/* 귀공통 */
+.ear{
+    position: absolute;
+    top: 80px;
+    width: 60px;
+    height: 90px;
+}
+/* 왼귀 */
+.er1{
+    left: -60px;
+    /* 둥근모서리: 왼위,왼아래만 30px */
+    border-radius: 30px 0 0 30px;
+}
+/* 오른귀 */
+.er2{
+    right: -60px;
+    /* 둥근모서리: 오른위,오른아래만 30px */
+    border-radius: 0 30px 30px 0;
+}
+
+/******* 2-1-2.로봇몸통 *******/
+.body{
+    position: relative;
+    /* 부모자격 - 자식요소 앱솔루트 */
+    width: 250px;
+    height: 310px;
+
+    /* 마영오! */
+    margin: 0 auto;
+    /* 마진상단 */
+    margin-top: 50px;
+}
+/* 가상요소로 몸박스 하단처리 */
+.body::after{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    left: -2%;
+    width: 104%;
+    height: 120px;
+    /* 선형 그라데이션 */
+    background-image: linear-gradient(hotpink,aqua,darkblue);
+    /* 다각형 클리핑(바지모양) */
+    clip-path: polygon(0 0,100% 0,100% 80%,70% 100%,30% 100%,0 80%);
+}
+/* 목 */
+.neck{
+    position: absolute;
+    top: -50px;
+    left: 95px;
+    width: 60px;
+    height: 50px;
+}
+/* 팔공통 */
+.arm{
+    position: absolute;
+    width: 50px;
+    height: 250px;
+    /* 배경셋팅변경 */
+    background-size: 100%;
+    background-repeat: repeat-y;
+}
+/* 가상요소로 손만들기 */
+.arm::before{
+    content: '';
+    /* 블록요소 느낌! */
+    display: block;
+    /* 앱솔루트 */
+    position: absolute;
+    bottom: -25px;
+
+    width: 70px;
+    height: 70px;
+    /* 둥근모서리: 원 */
+    border-radius: 50%;
+    /* background-color: yellow; */
+
+    /* 선형 그라데이션 */
+    background-image: 
+    /* linear-gradient(red,blue); */
+    /* linear-gradient(to right,red,blue); */
+    /* linear-gradient(to left,red 5%,blue 20%,blue 80%,yellow); */
+    /* linear-gradient(45deg,red,blue,yellow); */
+    /* 원형 그라데이션 */
+    /* radial-gradient(red,blue,yellow); */
+    /* radial-gradient(circle,red,blue,yellow); */
+    radial-gradient(farthest-side at 40% 40%,white,#333);
+}
+
+/* 왼쪽가상요소 위치 */
+.arm.a1::before{
+    left: -15px;
+}
+/* 오른쪽가상요소 위치 */
+.arm.a2::before{
+    right: -15px;
+}
+
+/* 
+    [ 배경이미지에 있다! 뭐가? 그라데이션이!!! ]
+    background-image : 선형/원형 그라데이션 설정;
+
+    1. 선형 그라데이션
+
+    linear-gradient(방향/각도, 색1 비율%, 색2 비율%,...)
+    1) 방향값 : to top / to bottom / to left / to right
+    2) 각도값 : 숫자deg -> deg는 degree에서 나온말!
+    -> 방향 또는 각도를 사용, 안쓰면 to bottom이 기본값
+    -> 색상을 쓰고 뒤에 필요한 경우 비율을 사용
+    -> 색상뒤에 비율을 안쓰면 등분할 됨 
+
+    2. 원형 그라데이션
+    radial-gradient(옵션,색1 비율%, 색2 비율%,...)
+    1) 옵션: circle - 원형, 안쓰면 박스크기에 맞춤
+    2) 세밀한 옵션: 특정위치를 중심으로 빛반사효과
+        ->>> 세부옵션 at 가로위치 세로위치
+        ->>> 세부옵션 종류 4가지:
+            (1) closest-side   (2) farthest-side
+            (3) closest-corner (4) farthest-corner
+        예) background-image:
+            radial-gradient(closest-side at 30px 15px,white,blue)
+            -> 가로, 세로 위치는 px / % 단위사용가능
+
+    -> 색상을 쓰고 뒤에 필요한 경우 비율을 사용
+    -> 색상뒤에 비율을 안쓰면 등분할 됨 
+*/
+
+/* 가상요소로 손그림자주기 */
+.arm::after{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -25px;
+    width: 20px;
+    height: 40px;
+    background-color: #000;
+    border-radius: 5px;
+    /* 클리핑 기법을 사용하여
+    그림자를 삼각형으로 만들자!
+    -> 다각형 클리핑
+    clip-path: polygon(x1 y1,x2 y2,...)
+    -> 소괄호를 비울 수 없다
+    -> 각 좌표는 x,y좌표 하나는 띄어쓰기로
+    다른 좌표는 콤마로 구분한다! */
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+/* 왼손그림자 위치 */
+.arm.a1::after{
+    left: 12px;
+}
+/* 오른손그림자 위치 */
+.arm.a2::after{
+    right: 12px;
+}
+
+/* 왼팔 */
+.a1{
+    left: -60px;
+}
+/* 오른팔 */
+.a2{
+    right: -60px;
+}
+
+/* 다리공통 */
+.leg{
+    position: absolute;
+    top: 100%;
+    /* 부모높이값 만큼 100% 밀기 */
+    width: 70px;
+    height: 300px;
+    /* 배경셋팅변경 */
+    background-size: 100%;
+    background-repeat: repeat-y;
+}
+/* 가상요소로 발만들기 */
+.leg::after{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -30px;
+    left: -6px;
+    width: 80px;
+    height: 40px;
+    /* 둥근모서리 윗쪽만 둥글게 */
+    border-radius: 30px 30px 0 0;
+    border: 1px solid #222;
+    border-bottom: 20px solid #000;
+    /* 원형그라데이션 */
+    background-image: 
+    radial-gradient(farthest-side at 20px 10px, #fff, #333);
+    background-color: #fff;
+}
+
+/* 왼다리 */
+.l1{
+    left: 0;
+    /* 안써도 기본방향이 left임! */
+}
+/* 오른다리 */
+.l2{
+    right: 0;
+}
+/* 어깨공통 */
+.shd{
+    position: absolute;
+    top: -20px;
+    width: 90px;
+    height: 80px;
+}
+/* 왼어깨 */
+.s1{
+    left: -80px;
+    /* 둥근모서리: 왼위,왼아래 둥글게 */
+    border-radius: 50% 0 0 50%;
+}
+/* 오른어깨 */
+.s2{
+    right: -80px;
+    /* 둥근모서리: 오른위,오른아래 둥글게 */
+    border-radius: 0 50% 50% 0;
+}
+
+/* TV */
+.tv{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 200px;
+    height: 130px;
+    background: url(../images/tv.jpg) no-repeat 0/100%;
+    border: 5px ridge lightskyblue;
+    border-radius: 10px;
+}
+/* 스크린 */
+.screen{
+    position: absolute;
+    top: 4px;
+    left: 11px;
+    /* 부모는? .tv */
+    width: 141px;
+    height: 111px;
+    background-color: #000;
+    border-radius: 10px;
+    /* 넘치는 자식요소 숨기기 */
+    overflow: hidden;
+}
+/* 아이프레임 */
+.screen iframe{
+    position: absolute;
+    top: -5px;
+    left: -28px;
+    width: 143%;
+    height: 107%;
+    /* 기본보더없앰 */
+    border: none;
+}
+
+/**** 2-2.로봇설명박스 ****/
+.dcbx{
+    /* 최대가로크기 maw */
+    max-width: 800px;
+    /* 마영오! */
+    margin: 0 auto;
+    /* 하단공간 */
+    margin-bottom: 200px;
+    /* 반투명 배경색 */
+    background-color: rgba(0, 0, 0, 0.514);
+    /* 글자색 */
+    color: #fff;
+    /* 글자그림자 ts */
+    text-shadow: 1px 1px 1px #000;
+    /* 패딩 : 위아래 양쪽 */
+    padding: 15px 30px;
+    /* 경계선 : 두종색 */
+    border: 3px solid #fff;
+    /* 둥근모서리 */
+    border-radius: 20px;
+    /* 박스그림자
+    - 콤마로 연결하면 다중셋팅가능
+    - inset은 내부그림자 */
+    box-shadow: 
+    inset 0 0 20px blue,
+    inset 0 0 50px 10px cyan;
+}
+/* 2-2-1.로봇설명 제목 */
+.dcbx h2{
+    /* 글자체 */
+    font-family: 'Chakra Petch';
+    /* 글자중앙 */
+    text-align: center;
+    /* 글자크기 */
+    font-size: 35px;
+    /* 글자색 */
+    color: lime;
+    /* 배경색 흰색반투명 */
+    background-color: rgba(255, 255, 255, 0.546);
+    /* 둥근모서리 */
+    border-radius: 20px;
+}
+/* 2-2-2.로봇정보출처 */
+.dcbx small{
+    /* 글자체 */
+    font-family: 'Chakra Petch';
+    /* 블록으로 변경
+    (텍스트중앙적용위해) */
+    display: block;
+    /* 텍스트중앙 */
+    text-align: center;
+    /* 글자색 */
+    color: #ff0;
+    /* 글자크기 */
+    font-size: 12px;
+    /* 패딩 */
+    padding: 10px;
+}
+/* 2-2-3.설명문단 */
+.dcbx p{
+    /* 글자체 */
+    font-family: 'Barlow';
+    /* 글자크기 */
+    font-size: 15px;
+    /* 줄간격 */
+    line-height: 1.8;
+    /* 자간 */
+    letter-spacing: 1px;
+    /* 단어간격 */
+    word-spacing: 2px;
+
+    /* 가독성을 위한 다단설정 */
+    /* 다단표시(다중열속성) */
+
+    /* 다중열 개수 */
+    column-count: 3;
+
+    /* 다중열 구분선 */
+    column-rule: 
+    5px dotted lightgreen;
+    /* 보더셋팅과 유사함!
+    두께 종류 색상(두종색) */
+
+    /* 다중열 사이간격 */
+    column-gap: 55px;
+
+    /* 양쪽정렬 justify */
+    text-align: justify;
+    /* 단어깨기
+    break-all 모든단어깨기 */
+    word-break: break-all;
+    /* 단어를 깨는 이유는 
+    단어단위로 줄바꿈이 되는
+    1byte문자인 영어인 경우
+    단어단위로 모두 깨줘야
+    양쪽정렬시 중간 공백이 
+    생기지 않는다!
+    (한글과 같은 2byte문자는
+    단어깨기를 안해도 모두
+    떨어진다) */
+
+    /* 첫글자 들여쓰기 ti */
+    text-indent: 20px;
+}
+/* 설명문단 첫글자 가상요소로
+글자디자인 변경하기 */
+.dcbx p::first-letter{
+    /* 글자크기 */
+    font-size: 30px;
+    /* 글자두껍게 */
+    font-weight: bold;
+    /* 글자색 */
+    color: orange;
+}
+
+/************* 3. 하단영역 *************/
+
+.info{
+    /* 패딩 */
+    padding: 50px;
+    /* 글자중앙 */
+    text-align: center;
+    /* 글자색 */
+    color: #fff;
+    /* 글자: 스두크/줄체 */
+    font: 30px 'Black Ops One';
+    /* 글자그림자 */
+    text-shadow: 2px 2px 2px #000;
+    /* 배경색 검정반투명 */
+    background-color: rgba(0, 0, 0, 0.504);
+}
+.my::before{
+    content: '9999';
+}
+.my::first-line{
+    font-size: 50px;
+    color: pink;
+}
+
+
+
