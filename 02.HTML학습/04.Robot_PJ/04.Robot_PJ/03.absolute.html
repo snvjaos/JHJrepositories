@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position - absolute</title>
+    <style>
+        .bx{
+            width: 100px;
+            height: 100px;
+            border: 2px solid blue;
+            /* 글자가로중앙 */
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            /* 글자세로중앙 */
+            line-height: 100px;
+        }
+
+
+        #a1{
+            position: absolute;
+            /****************************************** 
+            [ 3. absolute 포지션 ]
+            - 절대적인 부모를 기준하여 위치를 이동하는 포지션
+            - 부모자격을 따져서 기준을 삼는다!
+            (단, 위치속성값을 쓴 경우에만!!!)
+
+            1) absolute 포지션은 위치이동값을
+            쓰기전과 후로 나눠볼 수 있다!
+
+                (1) 위치이동값을 쓰지 않은 경우
+
+                - 자기 보다 위에 있는 static한 요소를
+                존중하여 그 아래에 위치함
+                (젠틀앱솔루트~!!!)
+                + 어떤 요소의 자식요소로 앱솔루트를 주는 경우
+                위치값을 안쓸때 그 부모박스안에 가만히 있는다!
+                (젠틀앱솔루트~!!!)
+
+                - 자기보다 아래쪽에 있는 static한 요소는
+                앱솔루트를 인식하지 못하여 같은 자리에
+                위치함(즉, 위로 올라옴!)
+
+                (2) 위치이동값을 사용한 경우
+
+                - 위치 이동값을 사용한 부분에 대해서만!!!!!!!!!!!!!!!!!!
+                앱솔루트가 위치를 잡을 때 기준이 되는
+                부모요소를 찾는다!
+
+                일반적으로 부모요소란 싸고있는 요소지만
+                앱솔루트가 위치를 잡기위한 기준이 되는
+                부모는 static이 아닌요소가 부모다!!!!!
+
+                -> static이 아닌 포지션이란?
+                relative / absolute / fixed / sticky
+
+                -> 위치 이동값을 쓰지 않은 부분에 대해서는 부모를 찾지 않는다!!!(젠틀함)
+
+                -> 부모자격이 있는 부모요소들 중 가장
+                가까운것이 부모가 된다!
+
+                -> 만약 부모자격이 모두 없으면
+                보이는 화면(window)을 기준한다!
+                ->>> 보이는 화면은 body가 아니다!!!
+                스크롤이 생겨도 스크롤위쪽에 보이는 화면
+                만을 지칭한다!
+
+                ->>>>> 또한!!!
+                width 나 height 값을
+                %로 줄 경우 부모자격이 있는 요소를
+                기준하여 크기를 잡는다!
+
+                
+
+            2) 앱솔루트 가로, 세로 크기를 주지 않은 경우
+            일반적으로 block요소 이므로
+            width: auto 로써 부모끝까지 차지하지만
+            앱솔루트는...
+            내용만큼 그 크기가 자동으로 설정됨!
+            [-> 앱솔루트 판타롱스타킹!]
+                
+            3) 블록이 아닌 요소에 앱솔루트를 준 경우
+            자동으로 display:block 로 설정됨!
+            이유는 자동크기를 설정할 경우 블록이 아니면
+            크기설정이 안되므로 자동전환된다!
+            -> 일반적으로 모든 앱솔루트는 block이다!
+
+            4) 앱솔루트 마진을 설정할 경우
+            설정이 반영되는 경우는 위치설정과
+            같은 방향의 마진만 적용된다!
+            예)
+            top을 적용했으면 margin-top
+            left를 적용했으면 margin-left
+            bottom을 적용했으면 margin-bottom
+            right를 적용했으면 margin-right
+
+            -> 앱솔루트의 마진 적용은 이동후
+            미세조정을 개별적으로 할 경우
+            또는 젠틀앱솔루트인 경우 위치이동값을
+            사용하면 부모도 설정해야 하는 등
+            복잡해지므로 이럴때 사용한다!
+
+            -> 앱솔루트에 위치이동값이 설정되지 
+            않은 경우 기본위치 기준값이 top, left
+            이므로 마진도 margin-top,margin-left
+            만 적용된다!
+               
+
+            5) 위치 이동값의 초기화!
+            - 값으로 auto를 쓰면된다!
+            예) top: auto
+            -> 언제 초기화 하나?
+            기존에 이미 설정된 하나의 위치값을
+            반대방향의 위치값으로 변경할때
+            초기화를 사용한다!
+            예) 기존 -> top: 50px;
+                변경 -> bottom: 50px; top: auto;
+
+            6) 위치이동값을 전부 다 쓰는 경우도 있다!
+            언젤까?
+            부모박스에 가득채우거나 일정위치를 잡고
+            크기가 유동적일때 사용함!
+
+            예) 부모박스를 채우는 앱솔루트는?
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            (단, width, height는 설정안함!)
+
+            7) 앱솔루트끼리는 서로 겹친다!
+
+
+            ******************************************/
+
+            background: url(./ab_img/ab1.jpg) no-repeat center/cover;
+            color: #fff;
+        }
+
+        /* 위치값을 가지는 앱솔루트 */
+        #a2{ 
+            position: absolute;
+            top: 0;
+            right: 0;
+            
+
+            background: url(./ab_img/ab1.jpg) no-repeat center/cover;
+            color: #fff;
+        }
+
+
+        #s1{
+            background-color: lightgreen;
+        }
+
+        #r1{
+            position: relative;
+            top: 20px;
+            left: 20px;
+            background: url(./ab_img/ab5.jpg) no-repeat center/cover;
+            color: #fff;
+        }
+        #r2{
+            position: relative;
+            bottom: 20px;
+            left: 60px;
+            background: url(./ab_img/ab4.jpg) no-repeat center/cover;
+            color: #fff;
+
+        }
+
+        /* 부모를 찾는 앱솔루트 */
+       
+
+        .bx2{
+            border: 2px dotted orange;
+            padding: 50px;
+            font-size: 24px;
+            text-align: center;
+        }
+        /* 각 부모박스 */
+        .s5{
+            position: relative;
+            background-color: lightblue;
+        }
+        .s6{
+            position: relative;
+            background-color: lightcoral;
+        }
+        .s7{
+            position: relative;
+            background-color: lightgreen;
+        }
+        .s8{
+            position: relative;
+            background-color: lightsalmon;
+        }
+        /* 부모찾는 앱솔루트 박스 */
+        .abs{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+
+            color: #fff;
+            background: url(./ab_img/ab1.jpg) no-repeat center/cover;
+        }
+
+        /* .a3는 앱솔루트면서 위치값이 없으므로
+        젠틀하다!!! - 싸고있는 박스안에 그대로 있음! */
+
+        /* 부모박스를 찾는 .a4 */
+        .a4{
+            top: 0;
+            left: 0;
+            /* 나의 부모는? */
+            width: 20%;
+            height: 40%;
+            /* 앱솔루트인데 %로 가로,세로 크기를
+            설정할 경우 부모자격요소를 기준한다! */
+        }
+
+        /* 앱솔루트 : 판타롱스타킹 */
+        .a5{
+            position: absolute;
+            /* 크기를 안주면 내용만큼 늘어남! */
+            top: 20%;
+            right: 10%;
+            /* 부모는? 보이는 화면! */
+        }
+        .a5 img{
+            vertical-align: top;
+            /* 이미지 하단 간극 없앰!(기본4px)
+            top/middle/bottom 모두 가능! */
+        }
+
+        /* span을 앱솔루트로! */
+        .spabs{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            /* 부모는 .s8 */
+            border: 4px dotted red;
+        }
+
+        /* 앱솔루트끼리는 서로 겹친다 */
+        .absimg{
+            width: 92px;
+            height: 115px;
+            border: 10px ridge orange;
+        }
+        .absimg img{
+            position: absolute;
+            /* 젠틀앱솔루트여서
+            부모자격이 없는 일반 static
+            요소여도 그 자리에 가만히 있음! 
+            -> 앱솔루트 이미지끼리는
+            서로 겹쳐짐(위,아래는 z-index로 변경가능)*/
+        }
+        /* 두번째 닥스이미지 투명하게 변경 */
+        .absimg img:last-child{
+            opacity: 0;
+            /* 
+                [ opacity 속성 ]
+                - 투명도 속성
+                - 0 완전투명, 1 불투명
+                - 0.얼마 소수점값 반투명
+            */
+
+            /* 트랜지션 trs */
+            transition: 1s;
+        }
+        /* 오버시 닥스이미지 나타나기 */
+        .absimg:hover img:last-child{
+            /* 투명도 op */
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="bx" id="r1">r1</div>
+    <div class="bx" id="s1">s1</div>
+    <div class="bx" id="a1">a1</div>
+    <div class="bx" id="r2">r2</div>
+    <div class="bx" id="s2">s2</div>
+    <div class="bx" id="a2">a2</div>
+
+
+    <!-- 앱솔루트 : 판타롱스타킹! -->
+    <div class="a5">
+        <img src="./ab_img/ab2.jpg" alt="타노스">
+    </div>
+
+    <!--  앱솔루트끼리는 서로 겹친다! -->
+    <div class="absimg">
+        <img src="./ab_img/ab3.jpg" alt="토르">
+        <img src="./ab_img/ab4.jpg" alt="닥스">
+    </div>
+
+    <!-- 부모를 찾는 앱솔루트! -->
+    <div class="bx2 s5">s5
+        <div class="bx2 s6">s6
+            <div class="bx2 s7">s7
+                <div class="bx2 s8">s8
+                    <div class="abs a3">a3</div>
+                    <div class="abs a4">a4</div>
+                    <span class="spabs">
+                        나는 span앱솔루트다!
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
