@@ -10,13 +10,16 @@
         /********************************************* 
                 함수명: jumsu
                 기능: 점수에 따른 평가출력하기
+                    1. 점수에 따른 메시지 출력
+                    2. 점수에 따른 메시지 글자색 변경
+                    3. 점수에 따른 칭찬스티커 보이기
         *********************************************/
-       function jumsu(){
+        function jumsu() {
 
             // 1. 함수호출 확인!
             // console.log("점수요~~!");
 
-            // 2. 대상선정
+            // 2. 대상선정 ////////////////////////////
             // 2-1. 점수입력요소 : input#jumsu
             var jumsu = document.getElementById("jumsu");
 
@@ -26,31 +29,116 @@
             // 2-3. 칭찬스티커 : #jshow
             var jshow = document.querySelector("#jshow");
 
-            // 3. 입력값 읽어오기
+            // 3. 입력값 읽어오기 ///////////
             var score = jumsu.value;
             // value속성 - 입력된 값을 읽기/쓰기
 
             // console.log("입력된값:",score);
 
+
+            /*********************************** 
+                [ 데이터 초기화 함수 ]
+                * 함수명: initFn
+                * 기능:
+                 숫자가 아니거나 범위밖숫자일때
+                 셋팅될만한 요소를 초기화해줌
+            ***********************************/
+            // 변수에 익명함수 function(){} 를 할당함!
+            // 변수에 할당한 함수일 경우 바로호출하려면
+            // 할당된 함수가 호출코드 보다 위에 있어야함!
+            var initFn = function () {
+                // (1) 글자색 초기화
+                jexp.style.color = "#000";
+
+                // (2) 칭찬스티커 초기화
+                jshow.style.backgroundPosition = "322px 0";
+
+                // (3) 입력창에 내용지우기
+                jumsu.value = "";
+                // 빈문자값을 넣으면 지워짐!
+
+                // (4) 입력창에 포커스주기(버튼클릭시)
+                jumsu.focus();
+                // focus() JS내장함수는 입력창에 커서가 감!
+            }; ///////////// initFn 함수 ///////////
+
+
+
+            /********************************** 
+                [ 숫자여부 판별 ]
+            -> isNaN() JS내장함수 사용!
+            -> is Not a Number? -> true
+                (숫자가 아니니?) -> 응, 숫자아님
+            **********************************/
+            console.log("숫자가 아니니?", isNaN(score));
+
+            // 숫자여부판별 if문 ///////////////////////
+            if (isNaN(score)) {
+                // 1. 숫자가 아닐경우 메시지 출력
+                jexp.innerText = "숫자를 입력하세요!"
+
+                // 2. 데이터 초기화!
+                initFn();
+
+                // 아래쪽 코드를 실행하지 않기 위해
+                // if안에서 함수를 빠져나가는 명령을 함!
+                return;
+                // return키워드는 함수를 빠져나갈때 사용
+                // return 전달값 
+                // -> 함수를 호출한 곳으로 값전달가능
+            } //////////// if ////////////////////////
+
+            /************************************* 
+                 [ 숫자범위 판별하기 ]
+                 조건: 0미만 이거나 100초과인 경우
+            *************************************/
+            else if (score < 0 || score > 100) {
+                // 1. 범위 바깥일 경우 메시지 출력
+                jexp.innerText =
+                    "0이상 100이하의 숫자만 입력하세요!";
+
+                // 2. 초기화
+                initFn();
+
+                // 3. 리턴 - 함수나가기!
+                return;
+
+            } ///////////// else if ///////////////////
+
+
+
+
+            /////////////////////////////////
             // 평가결과 메시지 변수
             var msg;
+            // 평가결과 메시지 글자색 변수
+            var jc;
+            // 평가결과 칭찬스티커 위치변수
+            var bgp;
+            /////////////////////////////////
 
 
-            // 4. 점수환산하기 
-            if(score >= 90){
+            // 4. 점수환산하기 //////////
+            if (score >= 90) {
                 msg = "매우잘함";
-            }
-            else if(score >= 80){
+                jc = "blue";
+                bgp = "0 0";
+            } else if (score >= 80) {
                 msg = "잘함";
-            }
-            else if(score >= 70){
+                jc = "green";
+                bgp = "-322px 0";
+            } else if (score >= 70) {
                 msg = "보통";
-            }
-            else if(score >= 60){
+                jc = "purple";
+                bgp = "-322px -322px";
+            } else if (score >= 60) {
                 msg = "노력요함";
-            }
-            else{
+                jc = "orange";
+                bgp = "0 -644px";
+            } else {
                 msg = "재시험";
+                jc = "red";
+                bgp = "-644px -644px";
             }
 
             // console.log(msg);
@@ -58,14 +146,20 @@
             // 5. 화면출력 : #jexp -> jexp변수
             jexp.innerText = "평가결과는 " + msg;
 
+            // 6. 글자색 변경
+            jexp.style.color = jc;
+            // style.속성명 = 값
+
+            // 7. 칭찬스티커 배경위치변경 : 
+            // #jshow -> jshow변수
+            jshow.style.backgroundPosition = bgp;
 
 
 
-            
 
-       } /////////////// jumsu 함수 //////////////////
-       ///////////////////////////////////////////////
-        
+        } /////////////// jumsu 함수 //////////////////
+        ///////////////////////////////////////////////
+
 
         /********************************************** 
             [ if문 ]
@@ -119,7 +213,104 @@
             함수명: local
             기능: 지역명을 입력하면 지역국번을 안내한다!
           *************************************************/
-        
+        function local() {
+
+            // 1. 함수호출확인!
+            // console.log("지역국번이 뭐야?");
+
+            // 2. 대상선정
+            // 2-1. 입력대상: input#local
+            var tg = document.querySelector("#local");
+
+            // 2-2. 출력대상: #info
+            var info = document.querySelector("#info");
+
+            // 3. 입력된 값 읽어오기 -> 지역명!
+            var txt = tg.value;
+            // 요소.value -> 요소의 value값 읽기/쓰기
+
+            console.log("지역명:", txt);
+
+            // 메시지 변수 /////////
+            var msg;
+            // 함수내에서 선언한 변수는 모두 지역변수임!
+            // 지역변수는 함수 외부에서 또는 다른함수에서
+            // 호출할 수 없음!
+
+            // 3. 지역명을 switch case문으로 분류하여 메시지넣기
+            switch (txt) {
+                case "서울":
+                    msg = "02";
+                    break;
+                case "경기":
+                    msg = "031";
+                    break;
+                case "인천":
+                    msg = "032";
+                    break;
+                case "부산":
+                    msg = "051";
+                    break;
+                case "대구":
+                    msg = "053";
+                    break;
+                case "광주":
+                    msg = "062";
+                    break;
+                case "전북":
+                    msg = "063";
+                    break;
+                case "전남":
+                    msg = "061";
+                    break;
+                case "경북":
+                    msg = "054";
+                    break;
+                case "경남":
+                    msg = "055";
+                    break;
+                case "세종":
+                    msg = "044";
+                    break;
+                case "울산":
+                    msg = "052";
+                    break;
+                case "대전":
+                    msg = "042";
+                    break;
+                case "충북":
+                    msg = "043";
+                    break;
+                case "충남":
+                    msg = "041";
+                    break;
+                case "제주":
+                    msg = "064";
+                    break;
+                case "나성":
+                    msg = "나성에 가면 편지를 전해줘요♬";
+                    break;
+                default:
+                    msg = "esc";
+            } //////////// switch case ////////////
+
+            console.log("메시지:", msg);
+
+            // 4. 메시지 만들기
+            // msg변수에 최종 출력내용을 다시 담아서 변경함!
+            if (msg === "esc")
+                msg = "등록되지 않은 지역입니다!";
+            else
+                msg = `${txt}의 지역번호는 ${msg}입니다!`;
+            // if문의 실행문이 1개이면 중괄호 생략가능!
+
+            // 5. 화면출력
+            // 출력대상: #info -> info변수
+            info.innerText = msg;
+
+        } /////////////// local 함수 ///////////////////////
+        ///////////////////////////////////////////////////
+
 
         /************************************************ 
            [ switch case 문 ]
@@ -162,7 +353,7 @@
                       변경될때 발생하는 이벤트
                       -> onchange 이벤트속성을 사용함!
           *************************************************/
-        
+
         /*************************************************** 
                [ for문 ]
 
@@ -199,7 +390,7 @@
                       변경될때 발생하는 이벤트
                       -> onchange 이벤트속성을 사용함!
           *************************************************/
-        
+
 
         /**************************************************** 
               [ while문 ]
@@ -279,7 +470,7 @@
     <h2>if문 연습</h2>
     <h3 id="jexp">평가출력</h3>
     <label for="jumsu">점수입력:</label>
-    <input type="text" id="jumsu" placeholder="점수를 입력하세요!" maxlength="3" />
+    <input type="text" id="jumsu" placeholder="점수를 입력하세요!" maxlength="3" onkeypress="if(event.keyCode===13)jumsu()" />
     <button class="sbtn" onclick="jumsu()">평가하기</button>
     <!-- 
         onkeypress 이벤트 속성 
@@ -319,8 +510,8 @@
     <h3 id="info">국번안내</h3>
     <label for="local">지역명 입력:</label>
     <input type="text" id="local" placeholder="지역명을 '도'를 빼고 쓰세요!" maxlength="10"
-      />
-    <button class="sbtn">국번문의</button>
+        onkeypress="if(event.keyCode===13)local()" />
+    <button class="sbtn" onclick="local()">국번문의</button>
 
     <br /><br />
     <hr />
