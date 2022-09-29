@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CGV PJ 메인 페이지 CSS - main.css */
+
+/* 외부 CSS 합치기 */
+@import url(reset.css);
+@import url(core.css);
+
+/* 전체배경색 */
+body{
+    background-color: #000;
+}
+
+/* 공사중표시 */
+body *{
+    outline: 1px dotted lime;
+}
+
+/****************** 1. 상단영역 ******************/
+.top{
+    height: 80px;
+    background: url(../images/curtain.jpg) repeat-x;
+}
+/* 1-1.로고 */
+.tit{
+    font-family: 'Jua', sans-serif;
+    color: aquamarine;
+    font-size: 4rem;
+    text-align: center;
+    line-height: 80px;
+
+    /* 그림자를 이용한 Glow효과 */
+    text-shadow: 0 0 4px aquamarine;
+    /* 애니메이션: 이시이지반방마 */
+    animation: 
+    titAni .5s ease-in infinite alternate;
+}
+/* 타이틀 글로우 효과 애니메이션 키프레임 */
+@keyframes titAni {
+    to{
+        text-shadow: 0 0 12px aquamarine;
+    }
+} /* 키프레임 */
+
+/****************** 2. 메인영역 ******************/
+.cont{
+    /* 렐러티브 포지션 : 부모자격(#screen) */
+    position: relative;
+    height: 788px;
+    background: url(../images/bg.jpg) no-repeat center;
+}
+/* 2-1.스크린박스 */
+#screen{
+    /* 앱솔루트 포지션 */
+    position: absolute;
+    top: 136px;
+    left: calc(50% - 344px);
+    /* 화면이 줄어도 스크린이 중앙에 위치하도록
+    left 50%밀고 스크린 크기의 절반정도를 뺌! */
+    width: 702px;
+    height: 397px;
+    /* 부모는? .cont */
+    background-color: #000;
+}
+/* 유튜브 아이프레임 */
+#screen iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* 기본프레임보더 없앰 */
+}
+
+/****************** 3. 하단영역 ******************/
+.info{
+    height: 100px;
+}
+
