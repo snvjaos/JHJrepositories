@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>For문 옵션</title>
+    <style>
+        .forCls {
+            height: 100px;
+            border: 4px dotted lightseagreen;
+        }
+
+        .forCls img {
+            height: 100px;
+        }
+    </style>
+    <script>
+        ////// 로드구역 ////////////////////////
+        window.addEventListener("DOMContentLoaded",
+            function () {
+
+                // 호출확인
+                console.log("로딩완료!");
+
+
+                // 대상 선정하기 /////////////
+
+                // 클릭이벤트 대상: button
+                let btns = document.querySelectorAll("button");
+                // console.log(btns);
+
+                // 버튼개수
+                let cnt = btns.length;
+
+                // 변경대상 : .forCls
+                let tg = document.querySelectorAll(".forCls");
+                // console.log(tg);
+
+                // 이벤트 설정하기 ///////////
+                for (let i = 0; i < cnt; i++) {
+                    btns[i].onclick = addNum;
+                } ////////// for //////////////
+
+
+                /*///////////////////////////////////////
+                    함수명: addNum
+                    기능: for문으로 숫자이미지를 추가한다
+                */ ///////////////////////////////////////
+                function addNum() {
+
+                    // 0. 호출한 버튼요소 자식의 버튼텍스트
+                    let btxt = this.innerText;
+                    // this는 항상 이벤트설정된 요소자신임!
+                    // 버튼별로 호출하는 요소가 들어옴!
+
+                    // 1. 함수호출확인
+                    console.log("나야나!", btxt);
+
+                    // 2. 버튼에 따른 분기하기
+                    // 출력대상이 버튼별로 다름
+                    // 출력순번 -> tg[순번]
+                    let num;
+                    if (btxt === "기본호출") num = 0;
+                    else if(btxt === "for문옵션1") num = 1;
+                    else if(btxt === "for문옵션2") num = 2;
+
+                    // 출력박스 내용 초기화(계속클릭시 쌓이므로!)
+                    tg[num].innerHTML = "";
+
+                    // 전체 공통 for문 //////////////
+                    // 이미지를 1번부터 10번까지 모두 출력
+                    for (let i = 1; i <= 10; i++) {
+
+                        // [ 4번과 7번이미지 빼고 돌리기 ]
+                        // continue 키워드 사용!
+                        // -> 해당순번 빼고 계속돌아라!
+                        // 제외란? continue 하단의 코드가 실행안됨!
+                        // 조건: num이 1이고 i가 4 또는 7일때
+                        if(num===1&&(i===4||i===7)) continue; 
+
+                        // [5번까지만 돌리기]
+                        // break 키워드 사용!
+                        // -> break를 만나는 순간 제어문을 빠져나간다!
+                        // 조건: num이 2이고 i가 6이면 for문을 나가라!
+                        if(num===2&&i===6) break;
+
+                        // 화면출력 //
+                        tg[num].innerHTML +=
+                            `<img src="./images/num/num_0${i}.png" alt="숫자이미지">`;
+
+                    } //////// for ////////////
+
+
+                } ///////////// addNum 함수 /////////////////
+                /////////////////////////////////////////////
+
+
+
+            }); ////////////로드구역 /////////////////
+    </script>
+</head>
+
+<body>
+    <h1>for문 옵션</h1>
+
+    <hr>
+
+    <h2>기본for문</h2>
+    <button>기본호출</button>
+    <br><br>
+    <div class="forCls"></div>
+    <hr>
+
+    <h2>4번과 7번빼고 돌리기</h2>
+    <button>for문옵션1</button>
+    <br><br>
+    <div class="forCls"></div>
+
+    <hr>
+
+    <h2>5번까지만 돌리기</h2>
+    <button>for문옵션2</button>
+    <br><br>
+    <div class="forCls"></div>
+
+    <hr>
+
+</body>
+
+</html>

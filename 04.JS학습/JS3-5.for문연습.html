@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for문 연습1 - 파란상자에 미니언즈 집어넣기</title>
+    <style>
+        /* 미니언즈 이미지 */
+        .mini {
+            cursor: pointer;
+            /* 손가락모양 */
+            border: 5px dotted #fff;
+        }
+
+        /* 마우스오버시 보더색 변경 */
+        .mini:hover {
+            border-color: red;
+        }
+
+        /* 파란색 가방 */
+        .Bcase {
+            border: 20px ridge blue;
+            min-height: 250px;
+            /* 최소높이를 주면 설정높이를 유지하다가
+            내용이 많아지면 높이값이 늘어남! */
+        }
+
+        .Bcase img {
+            width: 150px;
+            /* 크기줄임 */
+        }
+    </style>
+    <script>
+        ///////// 로드구역 ////////////////////
+        // 익명함수 function(){} -> 화살표함수 ()=>{}
+        window.addEventListener("DOMContentLoaded",
+            () => {
+                // 호출확인
+                console.log("로딩완료!");
+
+                // 클릭이벤트 대상: .mini
+                const mini =
+                    document.querySelectorAll(".mini");
+                // console.log(mini);
+
+                // 변경대상: .Bcase
+                const bcase =
+                document.querySelector(".Bcase");
+                // querySelector() 만나는 요소 하나만 가져옴
+                // console.log(bcase);
+
+                // 이벤트셋팅하기
+                // mini[0].onclick = function(){insMini(1)};
+                mini[0].onclick = () => insMini(1);
+                mini[1].onclick = () => insMini(5);
+                mini[2].onclick = () => insMini(10);
+
+                // 리셋버튼 기능구현 ///
+                // 리셋요소
+                const rbtn = 
+                document.querySelector(".rbtn");
+
+                // 글자크게
+                rbtn.style.fontSize = "40px";
+
+                // 기능구현
+                rbtn.onclick = 
+                () => bcase.innerHTML = "";
+                // 함수도 명령문이 하나면 중괄호{} 생략가능
+
+
+                /*////////////////////////////////////////
+                    함수명: insMini
+                    기능: 미니언즈 이미지를 파란박스에 넣기
+                */ ////////////////////////////////////////
+                function insMini(num) { // num - 반복수 받기
+
+                    // 1. 호출 및 전달값 확인
+                    console.log("나야나!", num);
+
+                    // 2. 변경대상: .Bcase -> bcase변수
+                    // 대상박스에 num개 만큼 미니언즈 이미지 넣기
+                    for (let i = 0; i < num; i++) {
+                        // += 대입연산자(기존값에 더함)
+                        bcase.innerHTML += 
+                        '<img src="./images/Minions.png" alt="미니언즈">';
+                    } ////////// for문 //////////////
+
+
+                } ////////// insMini 함수 /////////////////
+                ///////////////////////////////////////////
+
+
+
+            }); /////////////// 로드구역 //////////////
+    </script>
+</head>
+
+<body>
+    <h1>for문 연습1 - 파란상자에 미니언즈 집어넣기</h1>
+    <img src="./images/Minions.png" alt="미니언즈" class="mini" title="나를 클릭하면 한개씩 가방에 들어갈꼬얌~!">
+    <img src="./images/Minions.png" alt="미니언즈" class="mini" title="나를 클릭하면 다섯개씩 가방에 들어갈꼬얌~!">
+    <img src="./images/Minions.png" alt="미니언즈" class="mini" title="나를 클릭하면 열개씩 가방에 들어갈꼬얌~!">
+
+    <!-- 리셋을 한다면 이렇게...! -->
+    <button class="rbtn">리셋</button>
+
+    <!-- 파란상자 -->
+    <div class="Bcase"></div>
+
+</body>
+
+</html>
