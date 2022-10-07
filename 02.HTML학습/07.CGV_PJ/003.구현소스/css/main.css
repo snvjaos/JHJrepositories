@@ -49,7 +49,7 @@ body{
 .gnb{
     /* 앱솔루트 포지션 */
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     right: 20px;
     /* 부모는? .top */
 }
@@ -66,6 +66,8 @@ body{
     position: relative;
     font-size: 2rem;
     padding: 0 10px;
+    /* 하단패딩-서브메뉴 아웃문제해결! */
+    padding-bottom: 5px;
 }
 
 /* GNB 서브메뉴 */
@@ -129,8 +131,24 @@ body{
 }
 /* 서브메뉴 오버시 이모지 가상요소로 넣기 */
 /* 이모지는 윈도우키+세미콜론(;) 단축키 */
-.smenu a:hover::after{
+/* "영화"하위메뉴 이모지 */
+.gnb ul>li:nth-child(1) .smenu a:hover::after{
     content: '😍';
+    float: right;
+}
+/* "예매"하위메뉴 이모지 */
+.gnb ul>li:nth-child(2) .smenu a:hover::after{
+    content: '🎬';
+    float: right;
+}
+/* "극장"하위메뉴 이모지 */
+.gnb ul>li:nth-child(3) .smenu a:hover::after{
+    content: '📣';
+    float: right;
+}
+/* "이벤트&컬처"하위메뉴 이모지 */
+.gnb ul>li:nth-child(4) .smenu a:hover::after{
+    content: '🎪';
     float: right;
 }
 
@@ -183,6 +201,8 @@ body{
     display: flex;
     /* 수평방향 정렬 */
     justify-content: center;
+    /* 원근설정 - 하위li에 주기위함 */
+    perspective: 480px;
 }
 /* 상위 li */
 .mlist ul>li{
@@ -192,7 +212,23 @@ body{
     /* 부모자격이 있는 요소가
     앱솔루트 숨길 수 있다! */
     overflow: hidden;
+    /* 트랜스폼 축변경 - 하위 */
+    transform-origin: bottom;
+    /* 트랜스폼 x축회전 */
+    transform: rotateX(40deg);
+    /* 트랜지션: 속시이지 */
+    transition: all .4s ease-out;
 }
+/* 상위 li에 마우스 오버시 일어나!! */
+/* + 클래스on 적용시 같은 변경적용! */
+.mlist ul>li:hover,
+.mlist ul>li.on{
+    transform: rotateX(0deg);
+    outline: 1px solid aqua;
+    /* 오버시 맨위로 오게 z-index */
+    z-index: 1;
+}
+
 /* 상위 li 2번째 부터 끝까지 선택 */
 .mlist>ul>li+li{
     margin-left: 10px;
