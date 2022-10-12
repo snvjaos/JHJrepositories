@@ -1,0 +1,153 @@
+@charset "utf-8";
+/* 도깨비 PJ 회원가입 페이지 CSS - member.css */
+/* 회원가입 페이지에만 적용되는 CSS */
+
+/* 외부 CSS합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+/* 공사중 표시 */
+/* body * {
+    outline: 1px dotted red;
+} */
+
+/* 공통 메시지박스 */
+.msg{
+    position: absolute;
+    top: 35px;
+    left: 0;
+    /* 부모는? .scont li */
+    height: 15px;
+    line-height: 15px;
+    /* 줄바꿈방지 */
+    white-space: nowrap;
+
+    font-size: 10px;
+    color: red;
+}
+/* 메시지 글자색 변경 클래스 */
+.msg.on{
+    color: green;
+}
+
+
+/* 메인 겉박스 */
+#cont{
+    /* 전체 메인 배경색 */
+    background-color: #d7d7d7;
+}
+
+/* 메인 속박스 */
+.cont{
+    /* 최소높이설정 : 내용넘칠경우 자동auto */
+    min-height: 600px;
+    padding: 15px;
+}
+
+/* 1. 타이틀 */
+.stit{
+    font-size: 5rem;
+    text-align: center;
+    padding: 40px 0 20px;
+    font-weight: normal;
+}
+/* 2. 컨텐츠박스 */
+.scont{
+    /* 렐러티브 포지션 (부모자격:.btnbx) */
+    position: relative;
+    max-width: 700px;
+    min-height: 275px;
+    margin: 0 auto;
+
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid #777;
+    padding: 30px 50px;
+    /* 박스크기유지: 보더,패딩포함 bxb */
+    box-sizing: border-box;
+}
+
+/* 리스트 ul */
+.scont ul{
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    /* html 10px*2=20px */
+    font-weight: bold;
+    color: #333;
+}
+/* 리스트 li */
+.scont li{
+    /* 렐러티브 포지션 - 부모자격(.msg) */
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    /* outline: 2px dotted red; */
+}
+/* 라벨공통 타이틀(.itit) */
+.itit{
+    /* 디자인 적용위해 */
+    display: inline-block;
+    width: 200px;
+}
+/* 입력박스 공통 */
+/* []는 속성(attribute)선택자 */
+.scont input[type=text],
+.scont input[type=password]{
+    width: 340px;
+    height: 36px;
+    font-size: 2rem;
+    border: 1px solid #777;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+/* 라디오버튼 */
+.scont input[type=radio]{
+    width: 20px;
+    height: 20px;
+    /* 인라인요소간 세로정렬 */
+    vertical-align: -4px;
+}
+/* 이메일 앞주소 */
+#email1{
+    width: 170px;
+}
+/* 이메일 선택박스
+(=드롭다운박스=콤보박스) */
+#seleml{
+    width: 146px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 2rem;
+}
+/* 이메일 뒷주소 */
+#email2{
+    width: 136px;
+    float: right;
+    margin-top: 5px;
+    margin-right: 25px;
+    /* 처음에 안보임 */
+    display: none;
+}
+/* 가입하기 버튼 */
+#btnj{
+    width: 113px;
+    height: 40px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    background-image: 
+    linear-gradient(to bottom,#ddd,#555);
+    color: #fff;
+    text-shadow: 1px 1px 1px #555;
+
+    font-weight: bold;
+    font-size: 1.6rem;
+
+    float: right;
+    margin-top: 5px;
+    margin-right: 45px;
+
+    /* 손가락모양 */
+    cursor: pointer;
+}
