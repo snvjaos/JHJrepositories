@@ -1,0 +1,160 @@
+@charset "utf-8";
+/* CGV 메인 페이지 미디어쿼리 CSS - media.css */
+
+/* 1310px이하 미디어쿼리 시작 */
+@media screen and (max-width:1310px) {
+
+    /* gnb위치변경 */
+    .gnb {
+        right: 73px;
+    }
+}
+
+/* 1310px이하 미디어쿼리 끝 */
+
+/* 1024px이하 미디어쿼리 시작 */
+@media screen and (max-width:1024px) {
+
+    /* 네비 ul */
+    .gnb ul {
+        position: absolute;
+        top: 12px;
+        right: -59px;
+        width: 117px;
+        padding-top: 12px;
+        flex-direction: column;
+        align-items: flex-end;
+        /* 처음에 안보임 */
+        display: none;
+    }
+
+    /* gnb오버시 상위메뉴 보임 */
+    .gnb:hover ul {
+        display: flex;
+        /* 원래 display로 가야함! */
+    }
+
+    /* 오버시 서브메뉴 안나옴! */
+    .gnb ul>li:hover .smenu {
+        display: none;
+    }
+}
+
+/* 1024px이하 미디어쿼리 끝 */
+
+
+/* 700px이하 미디어쿼리 시작 */
+@media screen and (max-width:700px) {
+
+    /* 하단영역 */
+    .info {
+        flex-direction: column;
+        /* 세로진행방향 */
+        padding: 0 15px 20px;
+    }
+
+    /* 하단영역 파티션박스 div공통 */
+    .info>div {
+        padding-top: 10px;
+    }
+
+    /* 하단로고 박스 */
+    .info>div:first-child {
+        margin-right: 0;
+        /* 오른쪽마진 없앰 */
+    }
+
+    /* 회사주소박스 */
+    .info address {
+        text-align: center;
+        /* 글자정렬변경 */
+    }
+
+    /* sns박스 */
+    .info>div:last-child {
+        margin-left: 0;
+        /* 오른쪽끝설정 해제 */
+    }
+
+}
+
+/* 700px이하 미디어쿼리 끝 */
+
+
+/* 500px이하 미디어쿼리 시작 */
+@media screen and (max-width:500px) {
+
+    /* 메인 타이틀 */
+    .tit{
+        font-size: 10vw;
+    }
+
+    /* GNB */
+    .gnb{
+        bottom: -14px;
+    }
+
+    /* 메인 컨텐츠 박스 */
+    .cont {
+        /* 배경위치,크기변경 */
+        background-position: top;
+        background-size: 140%;
+    }
+
+    /* 메인 컨텐츠 박스 비율변경 */
+    .cont::before {
+        padding-top: 140%;
+    }
+
+    /* 스크린 위치,크기변경 */
+    #screen {
+        top: 11.3%;
+        left: 10.1%;
+        width: 81.5%;
+        height: 33.2%;
+    }
+
+    /* 2-2.예고편 선택메뉴 */
+    .mlist {
+        bottom: 2%;
+        width: 90%;
+    }
+
+    /* 선택메뉴 ul */
+    .mlist ul {
+        flex-wrap: wrap;
+    }
+
+    /* 상위 li */
+    .mlist ul>li {
+        /* 3등분의 적절한 조정 */
+        flex-basis: 29.23%;
+        /* 
+            기존에 flex:1 등분할 설정
+            되어서 flex-basis는
+            기본설정 0으로 되어있음
+            같은 의미인 width를
+            쓰면 적용안되는데
+            flex-basis가 더 우선한다!
+            width말고 flex-basis로 셋팅!
+        */
+    }
+
+    /* 영화선택메뉴 글자 */
+    .movtxt{
+        font-size: 4vw;
+    }
+    .movtxt li:first-child{
+        font-size: 5vw;
+    }
+
+    /* 회사주소 */
+    .info address span{
+        display: none;
+        /* 회사주소의 일부를 숨김 */
+    }
+
+
+}
+
+/* 500px이하 미디어쿼리 끝 */

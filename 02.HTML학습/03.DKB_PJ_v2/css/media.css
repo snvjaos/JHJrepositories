@@ -2,17 +2,17 @@
 /* 도깨비 PJ 미디어쿼리 CSS - media.css */
 
 /**************** 1200이하 ****************/
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
     /* 탑메뉴 가로크기 화면맞춤 */
-    .tmenu{
+    .tmenu {
         width: 100%;
     }
 } /**************** 1200px이하 ****************/
 
 /**************** 1070이하 ****************/
-@media screen and (max-width:1070px) {
+@media screen and (max-width: 1070px) {
     /* 상대단위 rem글자 크기변경 위해 html변경 */
-    html{
+    html {
         font-size: 8px;
     }
     /* GNB메뉴 조정 */
@@ -25,16 +25,16 @@
         max-width: 680px;
     }
     /* 브랜드박스 */
-    .brand{
+    .brand {
         display: none;
     }
 
     /* 캐릭터 박스 한줄에 2개씩 */
-    .cat{
+    .cat {
         width: 49%;
     }
     /* 캐릭터 부모박스 */
-    .cbx{
+    .cbx {
         margin-top: 100px;
     }
     /* 캐릭터 오버시 이미지박스 */
@@ -42,37 +42,144 @@
         margin-top: 0;
     }
     /* 캐릭터 오버시 z-index */
-    .cat:hover{
+    .cat:hover {
         z-index: 1;
     }
     /* 설명박스 타이틀 */
-    .cd h3{
+    .cd h3 {
         font-size: 3vw;
     }
     /* 설명박스 p요소 */
-    .cd p{
+    .cd p {
         font-size: 2vw;
     }
-
-
 } /**************** 1070px이하 ****************/
 
 /**************** 870이하 ****************/
-@media screen and (max-width:870px) {
-
-    /* 없어질 요소들 : 상단메뉴, GNB, 하단링크 */
-    .tmenu, .gnb, .blink{
+@media screen and (max-width: 870px) {
+    /* 없어질 요소들 : 
+    상단메뉴, GNB, 하단링크, 
+    서브메뉴, 서브배경가상요소,
+    상위메뉴 밑줄 가상요소 */
+    .tmenu,
+    .gnb,
+    .blink,
+    .smenu,
+    .gnb > ul > li.sm::after,
+    .gnb > ul > li > a::after {
         display: none;
     }
 
     /* 보여질요소 */
-    .ham{
+    .ham {
         display: block;
     }
 
     /* 상단영역 높이값 */
-    .top{
+    .top {
         height: 80px;
+    }
+
+    /* 전체메뉴가 보일 경우 셋팅 1,2,3,4 */
+    /* .top.on은 .top에 .on을 넣은 경우적용! */
+    /* 1. 로고고정! */
+    .top.on .logo {
+        position: fixed;
+        width: 100vw;
+        text-align: center;
+        z-index: 9999;
+    }
+    /* 2.햄버거 고정! */
+    .top.on .ham {
+        position: fixed;
+        z-index: 9999;
+        color: #fff;
+    }
+    /* + 햄버거 가상요소 모양변경 */
+    .top.on .ham::before{
+        content: '×';
+        transform: scale(1.5);
+    }
+    /* 3.GNB보이기! */
+    .top.on .gnb{
+        display: block;
+    }
+    /* 4.탑메뉴 보이기 */
+    .top.on .tmenu{
+        position: fixed;
+        top: auto;/* 기존top해제 */
+        bottom: 5vh;
+        /* 기존 width 100% 초기화 */
+        width: auto;
+        z-index: 9999;
+        /* 보이게함! */
+        display: block;
+    }
+    /* + 탑메뉴 글자 */
+    .top.on .tmenu a{
+        color: #fff;
+        font-size: 3vh;
+    }
+    /* + float없애기 */
+    .top.on .tmenu li{
+        float: none;
+    }
+    /* + flex로 변경 */
+    .top.on .tmenu ul,
+    .top.on .tmenu ol{
+        /* 플렉스박스 */
+        display: flex;
+        /* 줄바꿈설정 */
+        flex-wrap: wrap;
+        /* 수평방향중앙정렬 */
+        justify-content: center;
+    }
+    /* + 로그인, 회원가입 한줄에오게함 */
+    .top.on .tmenu ul>li{
+        width: 50%;
+        padding-bottom: 15px;
+        /* 패딩포함박스 */
+        box-sizing: border-box;
+    }
+    /* + 로그인 박스만 오른쪽정렬 */
+    .top.on .tmenu>ul>li:first-child{
+        text-align: right;
+    }
+
+
+    /* GNB 메뉴 모바일형으로 변경하기 */
+    .gnb {
+        /* 화면기준변경 포지션 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.512);
+        z-index: 999;
+        /* 기존마진없앰 */
+        margin: 0;
+    }
+    /* GNB ul */
+    .gnb > ul {
+        padding-top: 20vh;
+        /* line-height가 10vh이므로
+        6개메뉴니까 60%임. 나머지 40%의 반을
+        상단 패딩으로 설정하여 세로 중앙위치 */
+    }
+    /* GNB li */
+    .gnb > ul > li {
+        float: none;
+        /* float해제 */
+        /* outline: 2px dashed yellow; */
+    }
+    /* GNB a */
+    .gnb > ul > li > a {
+        color: #fff;
+        font-size: 5vh;
+        text-align: center;
+        line-height: 10vh;
+        /* li의 높이를 만들어줌! */
     }
 
     /* 캐릭터부모박스 */
@@ -81,19 +188,19 @@
     }
 
     /* 캐릭터박스 한줄에 하나씩 */
-    .cat{
+    .cat {
         width: 99%;
     }
     /* 설명박스 자리자치하는 포지션으로! */
-    .cd{
+    .cd {
         position: static;
     }
     /* 설명박스 타이틀 */
-    .cd h3{
+    .cd h3 {
         font-size: 4vw;
     }
     /* 설명박스 p요소 */
-    .cd p{
+    .cd p {
         font-size: 3vw;
     }
 
@@ -102,5 +209,4 @@
         height: auto;
         padding-bottom: 20px;
     }
-
 } /**************** 870px이하 ****************/

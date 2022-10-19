@@ -42,16 +42,16 @@
       /* 수평방향 flex 중앙정렬 */
       justify-content: center;
       /* width: 800px;
-      margin: 0 auto; -> flex에서 중앙정렬 설정 안씀! */
+      margin: 0 auto; -> flex에서 중앙정렬설정 안씀*/
       /* outline: 1px solid red; */
     }
 
-    /* 가상요소로 clear설정하기 */
-    .gnb ul::after {
+    /* 가상요소로 clear설정하기 -> flex는 불필요! */
+    /* .gnb ul::after {
       content: '';
       display: block;
       clear: both;
-    }
+    } */
 
     /* 상위li 리스트요소 */
     .gnb>ul>li {
@@ -59,7 +59,7 @@
       /* height: 40px; */
       text-align: center;
       /* outline: 1px dashed blue; */
-      /* float: left; -> 사용안함! flex쓸것임 */
+      /* float: left; -> 사용안함! flex쓸것임! */
       /* box-sizing: border-box; */
     }
 

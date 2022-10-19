@@ -157,25 +157,92 @@ body{
     border-top: 1px solid #ccc;
 }
 
+/* 영사기박스 */
+#cam{
+    position: absolute;
+    bottom: -11px;
+    right: -60px;
+    /* 부모는? .gnb */
+
+    /* outline: 1px dashed yellow; */
+}
+/* 영사기 이미지 */
+#cam img{
+    width: 50px;
+    transform: rotate(25deg);
+    
+    /* 트랜지션 : 속시이지 */
+    transition: .5s ease-out .3s;
+    /* 아웃시 지연시간(빔애니시간) */
+}
+/* .gnb에 마우스 오버시
+ 영사기이미지 회전 */
+ .gnb:hover #cam img{
+    transform: rotate(0deg);
+    /* 원본 지연시간 없앰 */
+    transition-delay: 0s;
+ }
+
+/* 빔박스 */
+.beam{
+    position: absolute;
+    top: -16px;
+    right: 12px;
+    z-index: -1;
+    /* z-index -1은 static보다 아래! */
+    /* 부모는? #cam */
+    width: 0;/* 200px; */
+    height: 70px;
+    background: url(../images/bim.png) no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+    /* 트랜지션 : 속시이지 */
+    transition: .3s ease-out;
+
+
+    /* outline: 2px dotted pink; */
+}
+/* .gnb에 마우스 오버시
+ 빔박스 width 늘리기 */
+ .gnb:hover #cam .beam{
+    width: 200px;
+    /* 오버시에 트랜지션 지연 */
+    transition-delay: .5s;
+ }
+
+
 
 /****************** 2. 메인영역 ******************/
 .cont{
     /* 렐러티브 포지션 : 부모자격(#screen) */
     position: relative;
-    height: 788px;
-    background: url(../images/bg.jpg) no-repeat center;
+    /* height: 788px;
+    -> 비율박스를 위해 높이값 없앰! */
+    background: url(../images/bg.jpg) no-repeat center/100%;
+}
+/* 비율유지 가상요소 패딩주기 */
+.cont::before{
+    content: '';
+    display: block;
+    /* div박스와 비슷함! */
+    padding-top: 65.66%;
+    /* 
+        배경이미지와 같은 비율계산하기!
+        1200:788 = 100:x
+        x = 788*100/1200
+          = 65.66%
+    */
 }
 /* 2-1.스크린박스 */
 #screen{
     /* 앱솔루트 포지션 */
     position: absolute;
-    top: 136px;
-    left: calc(50% - 344px);
-    /* 화면이 줄어도 스크린이 중앙에 위치하도록
-    left 50%밀고 스크린 크기의 절반정도를 뺌! */
-    width: 702px;
-    height: 397px;
-    /* 부모는? .cont */
+    top: 17.1%;
+    left: 21.3%;
+    width: 58.6%;
+    height: 50.6%;
+    /* 부모는? .cont
+    -> 부모가 비율박스니까 %로 모두설정! */
     background-color: #000;
 }
 /* 유튜브 아이프레임 */
@@ -189,11 +256,11 @@ body{
 /* 2-2.예고편 선택메뉴 */
 .mlist{
     position: absolute;
-    bottom: 57px;
-    width: 100%;
-    /* 앱솔루트 판타롱스타킹 이므로
-    가로크기를 부모박스에 맞춘다!
-    왜? flex 정렬을 쓰려고! */
+    left: 50%;
+    transform: translateX(-50%);
+    /* 가로중앙이동 */
+    bottom: 7%;
+    width: 54%;
 }
 /* 선택메뉴 ul */
 .mlist ul{
@@ -206,6 +273,9 @@ body{
 }
 /* 상위 li */
 .mlist ul>li{
+    flex: 1;
+    /* 플렉스 자식요소 등분할 설정 - 중요! */
+
     /* 렐러티브 포지션 
     - 부모자격(.movtxt) */
     position: relative;
@@ -236,8 +306,10 @@ body{
 
 /* 포스터 이미지 */
 .mlist img{
-    width: 99px;
-    height: 140px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 이미지를 박스에 맞춤! */
 }
 
 /* 영화정보박스 */
@@ -264,7 +336,7 @@ body{
     /* 글자셋팅 */
     font-family: 'Cute Font', cursive;
     color: #fff;
-    font-size: 1.4rem;
+    font-size: min(1.3vw,14px);
     text-align: center;
     line-height: 2;
 
@@ -279,7 +351,7 @@ body{
 /* 영화제목만 변경 */
 .movtxt li:first-child{
     color: aqua;
-    font-size: 1.7rem;
+    font-size: min(1.5vw,17px);
     letter-spacing: -1px;
 }
 
