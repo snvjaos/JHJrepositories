@@ -1,0 +1,8 @@
+@charset "utf-8"
+
+/************* 1. 상단영역 *************/
+#top{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+}
