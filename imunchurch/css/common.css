@@ -1,8 +1,24 @@
-@charset "utf-8"
+@charset "utf-8";
 
 /************* 1. 상단영역 *************/
 #top{
     background-color: #fff;
     border-bottom: 1px solid #ccc;
     overflow: hidden;
+}
+
+.logo{
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.logo img{
+    width: 300px;
+}
+
+.gnb{
+    width: 574px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
