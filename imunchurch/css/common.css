@@ -18,7 +18,27 @@
 }
 
 .gnb{
-    width: 574px;
-    margin: 0 auto;
     margin-top: 20px;
+}
+
+.gnb>ul>li>a{
+    position: relative;
+    display: block;
+    font-size: 1.7rem;
+    line-height: 2.5;
+}
+
+.gnb>ul>li>a::after{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: greenyellow;
+    transition: width .2s;
+}
+
+.gnb>ul>li:hover>a::after{
+    width: 100%;
 }
