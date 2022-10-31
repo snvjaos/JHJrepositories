@@ -15,9 +15,17 @@
             type="image/x-icon"
         />
         <!-- 폰티스토 아이콘 CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css">
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css"
+        />
         <!-- 메인CSS -->
         <link rel="stylesheet" href="./css/main.css" />
+        <!-- 제이쿼리 라이브러리 + UI -->
+        <script src="./js/jquery-3.6.1.min.js"></script>
+        <script src="./js/jquery-ui.min.js"></script>
+        <!-- 공통 JS 호출! -->
+        <script src="./js/common.js"></script>
     </head>
     <body>
         <!-- 1. 상단영역 -->
@@ -44,7 +52,28 @@
                         </a>
                     </div>
                     <!-- 1-1-2.사이드메뉴 -->
-                    <div class="sideMenu"></div>
+                    <div class="sideMenu">
+                        <ul class="smbx">
+                            <li>
+                                <a href="#">SIDE MENU</a>
+                                <!-- 서브메뉴 -->
+                                <ol class="smsub">
+                                    <li>
+                                        <a href="#">회사 소개</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">광고 및 제휴</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">개인정보 처리방침</a>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <a href="#">SUBSCRIBE</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- 1-2.로고박스 -->
                 <h1 class="logo">
@@ -53,11 +82,28 @@
                     </a>
                 </h1>
                 <!-- 1-3.GNB박스 -->
-                <nav class="gnb"></nav>
+                <nav class="gnb">
+                    <ul>
+                        <li><a href="#">FASHION</a></li>
+                        <li><a href="#">BEAUTY</a></li>
+                        <li><a href="#">LIVING</a></li>
+                        <li><a href="#">PEOPLE</a></li>
+                        <li><a href="#">VIDEO</a></li>
+                        <li><a href="#">RUNWAY</a></li>
+                        <li><a href="#">TIME &amp; GEM</a></li>
+                        <li><a href="#">SHOPPING</a></li>
+                        <li>
+                            <!-- 돋보기 검색버튼 -->
+                            <a href="#" class="fi fi-search">
+                                <span class="ir">search</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </header>
         </div>
         <!-- 2. 메인영역 -->
-        <div id="cont">
+        <div id="cont" class="bgc">
             <main class="cont ibx">
                 <!-- 유형1:컨텐츠박스1 -->
                 <section class="pt1 rbx">
@@ -151,8 +197,33 @@
             </main>
         </div>
         <!-- 3. 하단영역 -->
-        <div id="info">
-            <footer class="info ibx"></footer>
+        <div id="info" class="bgc">
+            <footer class="info ibx">
+                <!-- 3-1. 하단로고 -->
+                <div class="blogo">
+                    <img src="./images/footer_logo.png" alt="하단로고" />
+                </div>
+                <!-- 3-2. 회사주소 -->
+                <address class="addr">
+                    WWW.VOGUE.COM Ⓒ CONDÉNAST ASIA PACIFIC. INC. ALL RIGHTS
+                    RESERVED. VOGUE.COM KOREA IS OPERATED BY DOOSAN MAGAZINE.
+                </address>
+                <!-- 3-3. 하단링크 -->
+                <ul class="blink">
+                    <li>
+                        <a href="#">정기구독</a>
+                    </li>
+                    <li>
+                        <a href="#">회사소개</a>
+                    </li>
+                    <li>
+                        <a href="#">광고 및 제휴</a>
+                    </li>
+                    <li>
+                        <a href="#">개인정보 처리방침</a>
+                    </li>
+                </ul>
+            </footer>
         </div>
     </body>
 </html>
