@@ -21,6 +21,9 @@
     margin-top: 20px;
 }
 
+.gnb>ul>li{
+    padding: 0 5px;
+}
 .gnb>ul>li>a{
     position: relative;
     display: block;
