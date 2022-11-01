@@ -21,14 +21,20 @@
     margin-top: 20px;
 }
 
+.gnb>ul{
+    display: flex;
+    justify-content: center;
+}
+
 .gnb>ul>li{
-    padding: 0 5px;
+    padding: 0 100px;
 }
 .gnb>ul>li>a{
     position: relative;
     display: block;
     font-size: 1.7rem;
     line-height: 2.5;
+    color: darkgray;
 }
 
 .gnb>ul>li>a::after{
