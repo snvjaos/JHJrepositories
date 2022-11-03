@@ -34,7 +34,7 @@
     display: block;
     font-size: 1.7rem;
     line-height: 2.5;
-    color: darkgray;
+    color: lightcoral;
 }
 
 .gnb>ul>li>a::after{
@@ -51,3 +51,4 @@
 .gnb>ul>li:hover>a::after{
     width: 100%;
 }
+
