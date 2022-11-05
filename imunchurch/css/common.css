@@ -27,7 +27,7 @@
 }
 
 .gnb>ul>li{
-    padding: 0 100px;
+    padding: 0 50px;
 }
 .gnb>ul>li>a{
     position: relative;
@@ -51,4 +51,3 @@
 .gnb>ul>li:hover>a::after{
     width: 100%;
 }
-
