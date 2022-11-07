@@ -1,0 +1,409 @@
+@charset "utf-8";
+/* Info PJ 서브페이지 CSS - sub.css */
+
+/* 공통클래스 불러오기 */
+/* 
+    import 로 파일 합치기
+    외부 CSS파일에서 다른 외부 CSS파일을
+    import방식으로 불러올때 장점은?
+    html파일에서 link요소로 호출할 경우
+    http request(웹요청)이 많아져서
+    페이지 랜더링 속도가 더뎌진다!
+    따라서 이방식을 쓰면 한번에 여러 외부CSS를
+    불러올 수 있어서 속도에 유리하다!
+*/
+/* @import url(파일주소); */
+@import url(common.css);
+
+/* 메인영역박스 */
+.main{
+    /* 패딩 p15 */
+    padding: 15px;
+}
+
+/* 2-1. 언론사로고 */
+.prlogo img{
+    /* 높이값 h32 */
+    height: 32px;
+}
+/* 2-2. 기사제목 */
+.atit{
+    /* 글자크기 fz30 */
+    font-size: 30px;
+    /* 글자두께 보통 fwn */
+    font-weight: normal;
+    /* 글자체 ff */
+    font-family: "굴림","궁서",sans-serif;
+    /* 자간 ls-2 */
+    letter-spacing: -2px;
+    /* 단어간격 ws-1 */
+    word-spacing: -1px;
+
+    /* 줄바꿈방지 whs */
+    /* white-space: nowrap; */
+    /* 언제쓰나? 조금차이로 
+    줄바꿈되는 경우 안되게할때 
+    기본박스는 모두 wrap박스임! */
+
+}
+/* 2-3. 기사사진(+사진설명) */
+.afig{
+    /* 마진 m */
+    margin: 15px 0;
+    /* 마진: 위아래 양쪽 */
+
+    /* 컨텐츠 중앙정렬 tac */
+    text-align: center;
+}
+/* 기사 이미지 */
+.afig img{
+    /* 최대가로크기 maw100p */
+    max-width: 100%;
+    /* 이미지에 이설정을 하면
+    박스가 이미지보다 작아질때
+    이미지가 박스크기 맞게 작아짐! */
+
+    /* 가로크기 w100p */
+    /* width: 100%; */
+}
+/* 기사이미지 설명글 small */
+.afig small{
+    /* 글자체 ff */
+    font-family: gulim;
+    /* 글자색 c */
+    color: #555;    
+}
+
+/* 2-4. 기사내용 */
+.arti p{
+    /* 글자체 ff */
+    font-family: "Nanum Gothic","굴림";
+    /* 글자크기 fz */
+    font-size: 18px;
+    /* 줄간격 lh */
+    line-height: 1.6;
+    /* 패딩양쪽 */
+    padding: 0 10px;
+}
+/* 중간 글자표시박스 변경 */
+.arti mark {
+    /* 인라인을 블록으로 전환! */
+    display: block;
+    /* 배경색 */
+    background-color: #eaeaea;
+    /* 글자중앙정렬 */
+    text-align: center;
+    /* 줄간격 */
+    line-height: 3;
+    /* 글자체 */
+    font-family: 'Nanum Gothic';
+    /* 글자크기 */
+    font-size: 20px;
+    /* 글자두께 */
+    font-weight: bold;
+    /* 보더위 */
+    border-top: 2px solid gray;
+    /* 보더아래 */
+    border-bottom: 2px solid #ccc;
+}
+/* i요소 변경 */
+.arti i{
+    /* 글자스타일 노멀 fsn */
+    font-style: normal;
+    /* 글자 두껍게 fwb */
+    font-weight: bold;
+}
+/* q요소 변경 */
+.arti q{
+    /* 글자색 c */
+    color: darkmagenta;
+    /* 글자두껍게 fwb */
+    font-weight: bold;
+}
+/* del요소 변경 */
+.arti del{
+    /* 글자색 c */
+    color: lightpink;
+}
+
+/* 2-5. 기자정보 */
+.rinfo{
+    /* 패딩 p */
+    padding: 10px;
+    /* 글자크기 */
+    font-size: 14px;
+}
+
+/* 2-6. 기사원문 */
+.org a{
+    /* 패딩 p */
+    padding: 10px;
+    /* 글자크기 */
+    font-size: 20px;
+    /* 글자색 c */
+    color: lightseagreen;
+    /* 글자밑줄없앰 tdn */
+    text-decoration: none;
+    /* 보더 bd */
+    border: 1px dashed lightskyblue;
+}
+
+/* 공통박스 article */
+.main article{
+    /* 보더위 bdt */
+    border-top: 2px dashed #ccc;
+    /* 마진위 mt */
+    margin-top: 40px;
+    /* 패딩 p */
+    padding: 15px;
+}
+
+/* 공통 타이틀 h3 */
+.main h3{
+    /* 글자체 ff - 웹폰트적용 */
+    font-family: 'Black And White Picture', sans-serif;
+    /* 글자두께 얇게 fwn */
+    font-weight: normal;
+    /* 글자크기 fz */
+    font-size: 26px;
+    /* 패딩왼쪽 pl */
+    padding-left: 20px;
+}
+
+/* 블록 인용구 박스 */
+.bquote blockquote{
+    /* 마진없앰 m0 */
+    margin: 0;
+    /* 패딩 p */
+    padding: 5px;
+    /* float설정으로 망가진
+    부모박스는 overflow:hidden으로
+    고쳐준다(자식의 크기인식) */
+    /* 넘치는 자식요소 숨기기 oh */
+    overflow: hidden;
+
+    /* 글자설정 */
+    /* font: 스두크/줄체 */
+    font: 17px/1.7 'Nanum Gothic';
+    /* 글자정렬 ta */
+    text-align: justify;
+    /* justify 양쪽정렬 */
+
+    /* 들어쓰기 ti */
+    text-indent: 20px;
+}
+/* 블록인용박스 내 이미지 */
+.bquote img{
+    /* 이미지는 왼쪽에 글자는
+    오른쪽으로 흘러가게 설정 */
+    float: left;
+    /* 
+        [ float속성 ]
+        - 인라인요소에서 사용하면
+        선택된 요소의 위치를 잡고
+        그 왼쪽이나 오른쪽으로 다른
+        컨텐츠가 흘러가게 한다!
+        - 특히 이미지에서 글자를 
+        오른쪽이나 왼쪽으로 흘러가게함
+        - 기본적으로 이미지하단에
+        한줄만 글자가 흘러가게 되어있음!
+        (블록에서 float은 별도로다룸!)
+        -> 값에 따라
+        left - 나는 왼쪽 다른건 오른쪽으로 흘러감
+        right - 나는 오른쪽 다른건 왼쪽으로 흘러감
+        (인라인요소를 오른쪽 끝으로 보낼때도 사용함!)
+    */
+    /* 둥근모서리 brad */
+    border-radius: 5px;
+    /* 오른쪽마진 mr */
+    margin-right: 15px;
+}
+
+/* 주해박스 */
+/* .desc 앞에 .main부모를 쓴이유?
+기존 셋팅 .main article에서 설정한
+값이 우선하기 때문에 이것 보다
+우선하도록 상위 부모를 씀! */
+.main .desc{
+    /* 보더 하단 bdb */
+    border-bottom: 2px dashed #ccc;
+    /* 패딩 하단 pb */
+    padding-bottom: 40px;
+    /* 마진 하단 mb */
+    margin-bottom: 20px;
+    
+}
+
+/* 주해박스 small요소 */
+.desc small{
+    /* 전체 패딩적용위해 블록박스로 변경 */
+    display: block;
+    /* 패딩 p - 위아래 양쪽 */
+    padding: 0 20px;
+}
+
+/* 오늘의 작품 & 느낌 */
+.work {
+    /* 글자중앙정렬 tac */
+    text-align: center;
+    /* 배경색 bgc */
+    background-color: #d7ffd6;
+}
+/* 오늘의 작품 cite요소 */
+.work cite {
+    /* cite요소 기본 이탤릭해제 */
+    font-style: normal;
+    /* 글자두껍게 fwb */
+    font-weight: bold;
+    /* 글자체 ff */
+    font-family: 'Black And White Picture', sans-serif;
+    /* 글자크기 fz */
+    font-size: 20px;
+    /* 글자색 c */
+    color: darkorange;
+}
+
+/* 메인 컨텐츠 아래 a요소
+주의사항 - 글자색, 밑줄은 반드시 a요소에서 처리할것! */
+.main a{
+    /* 글자색 c */
+    color: #222;
+    /* 글자데코 tdn 밑줄없앰 */
+    text-decoration: none;
+    /* 글자크기 fz */
+    font-size: 17px;
+    /* 글자체 ff */
+    font-family: "Nanum Gothic";
+    /* 줄간격 lh */
+    line-height: 2.5;
+    /* 자간 ls */
+    letter-spacing: -1px;
+}
+/* a요소 마우스 오버시 */
+/* 가상클래스 :hover */
+.main a:hover{
+    /* 글자색 c */
+    color: greenyellow;
+    /* 글자그림자 ts */
+    text-shadow: 1px 1px 1px #000;
+    /* text-shadow: x축 y축 경계흐림 색; */
+}
+
+/* ul, ol 블릿,숫자 타입변경 */
+.main ul{
+    /* 리스트타입 lst */
+    list-style-type: square;
+    /* square 사각형, disc 원형, circle 빈원*/
+}
+.main ol{
+    list-style-type: upper-roman;
+    /* upper-roman 로마자 대문자 */
+    /* 순서를 표시하는 종류가 많다! */
+}
+
+/* li 순서별 글자색 변경하기 */
+.main ul li:first-child a{
+    color: red;
+}
+.main ul li:nth-child(2) a{
+    color: blue;
+}
+.main ul li:last-child a{
+    color: purple;
+}
+
+/* 분야별 뉴스 dt */
+.secnews dt {
+    font-family: 'Black And White Picture', sans-serif;
+    margin-top: 30px;
+    padding: 5px;
+    font-size: 22px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.476);
+
+    /* 한줄에 오고 디자인은 block처럼 적용 */
+    display: inline-block;
+
+    border: 3px dotted darkcyan;
+    /* 둥근모서리 - 50%값설정시 원 */
+    border-radius: 50%;
+}
+/* dt 순서별 글자색 변경 */
+.secnews dt:first-of-type{
+    color: darkgreen;
+}
+.secnews dt:nth-of-type(2){
+    color: darkmagenta;
+}
+.secnews dt:last-of-type{
+    color: darkred;
+}
+/* 
+    [ 자식요소 순번 선택하기 가상요소 ]
+    -> 태그가 한종류일때 (예: ul>li, ol>li)
+    :first-child 첫번째 자식요소
+    :nth-child(n) n번째 자식요소 (n은 1부터)
+    :last-child 마지막 자식요소
+    -> 태그가 여러종류일때 (예: dl>dt+dd)
+    :first-of-type 첫번째 자식요소
+    :nth-of-type(n) n번째 자식요소 (n은 1부터)
+    :last-of-type 마지막 자식요소
+*/
+
+/* 사진뉴스 박스 */
+.pnews table{
+    /* 마영오! - 블록요소,테이블 중앙정렬 */
+    margin: 0 auto;
+}
+/* 첫번째 td - 숫자부분 */
+.pnews td:first-child{
+    /* 가로크기 w */
+    width: 50px;
+    /* 세로크기 h */
+    height: 70px;
+    /* 배경색 bgc */
+    background-color: #ccc;
+    /* 글자중앙 tac */
+    text-align: center;
+}
+/* 두번째 td - 뉴스제목링크 */
+.pnews td:nth-child(2){
+    /* 배경색 bgc */
+    background-color: #eaeaea;
+    /* 패딩 오른쪽 pr */
+    padding-right: 116px;
+    /* 패딩 왼쪽 pl */
+    padding-left: 20px;
+}
+/* 사진뉴스 이미지 */
+.pnews img{
+    /* 가로크기 w */
+    width: 151px;
+    /* 세로크기 h */
+    height: 103px;
+    /* td에서 이미지 세로중앙 */
+    vertical-align: middle;
+    /* 
+        원래 vertical-align은
+        인라인요소간 세로정렬을
+        셋팅하는 속성인데 테이블의
+        td에서 이 속성은 td의
+        세로정렬에 사용할 수 있다!
+        여기서는 높이값이 지정되지
+        않은 상태에서 middle값을
+        주면 아래쪽 빈공간이 사라진다!
+    */
+}
+/* 사진뉴스 테이블 설정 */
+.pnews table{
+    /* 테이블 기본간격 bdcoll */
+    /* 
+        값:
+        collapse - 기본간극 없앰!
+        seperate - 간극있음(기본값)
+    */
+    /* border-collapse: collapse; */
+    border-collapse: separate;
+    /* 사이간격 수치설정하기 bdsp
+    - 주의-seperate상태에서만 설정 */
+    border-spacing: 7px;
+}
