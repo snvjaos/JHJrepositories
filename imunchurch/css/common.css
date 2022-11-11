@@ -51,3 +51,13 @@
 .gnb>ul>li:hover>a::after{
     width: 100%;
 }
+
+.tmenu ul, .tmenu ol{
+    display: flex;
+    padding: 0 5px;
+}
+
+.tmenu li{
+    display: flex;
+    padding: 0 5px;
+}
