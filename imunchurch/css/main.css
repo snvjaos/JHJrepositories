@@ -2,3 +2,15 @@
 
 @import url(./common.css);
 @import url(./reset.css);
+
+i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+}
+.ir {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
